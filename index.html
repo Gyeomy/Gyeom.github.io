@@ -5,25 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TrendScope - 크리에이터 트렌드 분석 | YouTube 인스타그램 AI 분석</title>
     
-    <!-- SEO 메타태그 -->
+    <!-- 
+    SEO(검색 엔진 최적화) 메타태그들 
+    - 검색 엔진이 웹사이트를 더 잘 찾을 수 있도록 도와주는 정보들
+    -->
     <meta name="description" content="YouTube, Instagram 트렌드를 AI로 분석하여 크리에이터의 콘텐츠 전략을 최적화하는 플랫폼입니다.">
     <meta name="keywords" content="유튜브 트렌드, 인스타그램 분석, 크리에이터 도구, AI 트렌드 분석, 콘텐츠 마케팅">
     <meta name="author" content="TrendScope">
     <meta name="robots" content="index, follow">
     
-    <!-- Open Graph (소셜미디어 공유) -->
+    <!-- 
+    Open Graph 태그 (소셜미디어 공유용) 
+    - 페이스북, 카카오톡 등에서 링크 공유할 때 보이는 미리보기 정보
+    -->
     <meta property="og:title" content="TrendScope - 크리에이터 트렌드 분석">
     <meta property="og:description" content="YouTube, Instagram 트렌드를 AI로 분석하여 크리에이터의 콘텐츠 전략을 최적화하는 플랫폼입니다.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yoursite.com">
     <meta property="og:image" content="https://yoursite.com/og-image.jpg">
     
-    <!-- Twitter Cards -->
+    <!-- 
+    트위터 카드 정보 
+    - 트위터에서 링크 공유할 때 보이는 미리보기 정보
+    -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="TrendScope - 크리에이터 트렌드 분석">
     <meta name="twitter:description" content="YouTube, Instagram 트렌드를 AI로 분석하여 크리에이터의 콘텐츠 전략을 최적화하는 플랫폼입니다.">
     
-    <!-- 구조화된 데이터 -->
+    <!-- 
+    구조화된 데이터 (JSON-LD 형식)
+    - 검색 엔진이 웹사이트 내용을 더 정확하게 이해할 수 있도록 도와주는 정보
+    -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -35,221 +47,327 @@
         "operatingSystem": "Web Browser"
     }
     </script>
+    
+    <!-- 
+    CSS 스타일 시작
+    - 웹사이트의 디자인과 레이아웃을 정의하는 부분
+    -->
     <style>
+        /* 
+        전체 요소 기본 설정 초기화
+        - 모든 HTML 요소의 기본 여백, 패딩을 0으로 설정
+        - box-sizing: border-box는 요소의 크기 계산 방식을 통일
+        */
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            margin: 0;           /* 외부 여백 제거 */
+            padding: 0;          /* 내부 여백 제거 */
+            box-sizing: border-box;  /* 테두리와 패딩을 포함한 크기 계산 */
         }
 
+        /* 
+        전체 페이지 기본 스타일
+        - 폰트, 색상, 배경 등 전체적인 디자인 설정
+        */
         body {
+            /* 시스템 폰트 우선 사용 (macOS, Windows, Linux 순으로 최적화) */
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
+            line-height: 1.6;    /* 줄 간격 설정 */
+            color: #333;         /* 기본 텍스트 색상 (어두운 회색) */
+            /* 그라데이션 배경 (보라색 계열) */
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            min-height: 100vh;   /* 최소 높이를 화면 전체 높이로 설정 */
         }
 
+        /* 
+        콘텐츠 컨테이너 
+        - 내용물을 중앙에 배치하고 최대 너비 제한
+        */
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            max-width: 1200px;  /* 최대 너비 제한 */
+            margin: 0 auto;     /* 좌우 중앙 정렬 */
+            padding: 0 20px;    /* 좌우 여백 */
         }
 
+        /* 
+        헤더 스타일 
+        - 상단 네비게이션 바의 디자인
+        */
         .header {
+            /* 반투명 배경 효과 */
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            backdrop-filter: blur(10px);    /* 배경 흐림 효과 */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);  /* 하단 테두리 */
+            padding: 1rem 0;    /* 상하 여백 */
+            position: sticky;   /* 스크롤해도 상단에 고정 */
+            top: 0;            /* 상단에 붙이기 */
+            z-index: 1000;     /* 다른 요소들 위에 표시 */
         }
 
+        /* 
+        네비게이션 바 레이아웃 
+        - 로고와 메뉴를 양쪽 끝에 배치
+        */
         .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: flex;              /* 플렉스 박스 사용 */
+            justify-content: space-between;  /* 양쪽 끝에 배치 */
+            align-items: center;        /* 세로 중앙 정렬 */
         }
 
+        /* 
+        로고 스타일 
+        - 왼쪽 상단의 사이트 이름
+        */
         .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
+            font-size: 1.8rem;   /* 글자 크기 */
+            font-weight: bold;   /* 굵은 글씨 */
+            color: white;        /* 흰색 글자 */
+            text-decoration: none;  /* 밑줄 제거 */
         }
 
+        /* 
+        네비게이션 링크들 
+        - 오른쪽 상단의 메뉴 항목들
+        */
         .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
+            display: flex;       /* 가로로 나열 */
+            list-style: none;    /* 목록 점 제거 */
+            gap: 2rem;          /* 항목 간 간격 */
         }
 
         .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
+            color: white;               /* 흰색 링크 */
+            text-decoration: none;      /* 밑줄 제거 */
+            transition: opacity 0.3s;   /* 투명도 변화 애니메이션 */
         }
 
         .nav-links a:hover {
-            opacity: 0.8;
+            opacity: 0.8;              /* 마우스 올렸을 때 약간 투명하게 */
         }
 
+        /* 
+        메인 히어로 섹션 
+        - 페이지 상단의 주요 내용 영역
+        */
         .hero {
-            text-align: center;
-            padding: 5rem 0;
-            color: white;
+            text-align: center;   /* 텍스트 중앙 정렬 */
+            padding: 5rem 0;      /* 상하 여백 */
+            color: white;         /* 흰색 텍스트 */
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
+            font-size: 3.5rem;    /* 큰 제목 크기 */
+            margin-bottom: 1rem;  /* 아래 여백 */
+            font-weight: 700;     /* 매우 굵은 글씨 */
         }
 
         .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            font-size: 1.3rem;    /* 설명 글자 크기 */
+            margin-bottom: 2rem;  /* 아래 여백 */
+            opacity: 0.9;         /* 약간 투명하게 */
         }
 
+        /* 
+        CTA(Call To Action) 버튼 
+        - 사용자의 행동을 유도하는 주요 버튼
+        */
         .cta-button {
-            background: #ff6b6b;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
+            background: #ff6b6b;     /* 빨간 배경 */
+            color: white;            /* 흰색 텍스트 */
+            padding: 1rem 2rem;      /* 내부 여백 */
+            border: none;            /* 테두리 제거 */
+            border-radius: 50px;     /* 둥근 모서리 */
+            font-size: 1.1rem;       /* 글자 크기 */
+            font-weight: 600;        /* 굵은 글씨 */
+            cursor: pointer;         /* 마우스 포인터 모양 */
+            transition: all 0.3s;    /* 모든 변화에 애니메이션 적용 */
+            text-decoration: none;   /* 밑줄 제거 */
+            display: inline-block;   /* 인라인 블록 요소로 표시 */
         }
 
         .cta-button:hover {
-            background: #ff5252;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+            background: #ff5252;     /* 마우스 올렸을 때 더 진한 빨간색 */
+            transform: translateY(-2px);  /* 위로 2px 이동 */
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);  /* 그림자 효과 */
         }
 
+        /* 
+        기능 소개 섹션 
+        - 서비스의 주요 기능들을 소개하는 영역
+        */
         .features {
-            padding: 5rem 0;
-            background: white;
+            padding: 5rem 0;    /* 상하 여백 */
+            background: white;  /* 흰색 배경 */
         }
 
+        /* 
+        기능 카드들을 그리드로 배치 
+        - 반응형 그리드 레이아웃 사용
+        */
         .features-grid {
-            display: grid;
+            display: grid;  /* 그리드 레이아웃 사용 */
+            /* 최소 300px, 최대 1fr(남은 공간 균등 분배)로 자동 배치 */
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 2rem;           /* 카드 간 간격 */
+            margin-top: 3rem;    /* 위쪽 여백 */
         }
 
+        /* 
+        개별 기능 카드 스타일 
+        - 각 기능을 설명하는 카드 디자인
+        */
         .feature-card {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s;
+            background: #f8f9fa;        /* 연한 회색 배경 */
+            padding: 2rem;              /* 내부 여백 */
+            border-radius: 15px;        /* 둥근 모서리 */
+            text-align: center;         /* 텍스트 중앙 정렬 */
+            transition: transform 0.3s; /* 변형 애니메이션 */
         }
 
         .feature-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-5px);  /* 마우스 올렸을 때 위로 5px 이동 */
         }
 
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;       /* 아이콘 크기 */
+            margin-bottom: 1rem;   /* 아래 여백 */
         }
 
         .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #333;
+            font-size: 1.3rem;     /* 제목 크기 */
+            margin-bottom: 1rem;   /* 아래 여백 */
+            color: #333;           /* 어두운 회색 */
         }
 
+        /* 
+        데모 섹션 
+        - 실제 서비스를 체험해볼 수 있는 영역
+        */
         .demo-section {
-            padding: 5rem 0;
+            padding: 5rem 0;    /* 상하 여백 */
+            /* 그라데이션 배경 (반대 방향) */
             background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-            color: white;
+            color: white;       /* 흰색 텍스트 */
         }
 
+        /* 
+        데모 컨테이너 
+        - 데모 기능을 담는 반투명 박스
+        */
         .demo-container {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.1);  /* 반투명 배경 */
+            padding: 2rem;                         /* 내부 여백 */
+            border-radius: 15px;                   /* 둥근 모서리 */
+            backdrop-filter: blur(10px);           /* 배경 흐림 효과 */
         }
 
+        /* 
+        검색 박스 
+        - 검색 입력창과 버튼을 나란히 배치
+        */
         .search-box {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            display: flex;        /* 플렉스 박스 사용 */
+            gap: 1rem;           /* 요소 간 간격 */
+            margin-bottom: 2rem; /* 아래 여백 */
         }
 
+        /* 
+        검색 입력창 
+        - 사용자가 키워드를 입력하는 필드
+        */
         .search-input {
-            flex: 1;
-            padding: 1rem;
-            border: none;
-            border-radius: 10px;
-            font-size: 1rem;
+            flex: 1;             /* 남은 공간을 모두 차지 */
+            padding: 1rem;       /* 내부 여백 */
+            border: none;        /* 테두리 제거 */
+            border-radius: 10px; /* 둥근 모서리 */
+            font-size: 1rem;     /* 글자 크기 */
         }
 
+        /* 
+        검색 버튼 
+        - 검색을 실행하는 버튼
+        */
         .search-button {
-            background: #ff6b6b;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
+            background: #ff6b6b;  /* 빨간 배경 */
+            color: white;         /* 흰색 텍스트 */
+            padding: 1rem 2rem;   /* 내부 여백 */
+            border: none;         /* 테두리 제거 */
+            border-radius: 10px;  /* 둥근 모서리 */
+            cursor: pointer;      /* 마우스 포인터 모양 */
+            font-weight: 600;     /* 굵은 글씨 */
         }
 
+        /* 
+        검색 결과 영역 
+        - 분석 결과를 표시하는 카드들
+        */
         .results {
-            display: grid;
+            display: grid;  /* 그리드 레이아웃 */
+            /* 최소 250px로 자동 배치 */
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 1rem;           /* 카드 간 간격 */
+            margin-top: 2rem;    /* 위쪽 여백 */
         }
 
+        /* 
+        개별 결과 카드 
+        - 각 분석 결과를 보여주는 카드
+        */
         .result-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);  /* 반투명 배경 */
+            padding: 1.5rem;                       /* 내부 여백 */
+            border-radius: 10px;                   /* 둥근 모서리 */
+            border: 1px solid rgba(255, 255, 255, 0.2);  /* 연한 테두리 */
         }
 
+        /* 
+        푸터 영역 
+        - 페이지 하단의 정보 영역
+        */
         .footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
+            background: #333;      /* 어두운 배경 */
+            color: white;          /* 흰색 텍스트 */
+            text-align: center;    /* 텍스트 중앙 정렬 */
+            padding: 2rem 0;       /* 상하 여백 */
         }
 
+        /* 
+        숨기기 클래스 
+        - 요소를 화면에서 숨길 때 사용
+        */
         .hidden {
             display: none;
         }
 
+        /* 
+        반응형 디자인 (모바일 대응) 
+        - 화면 크기가 768px 이하일 때 적용되는 스타일
+        */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.5rem;  /* 모바일에서는 제목 크기 축소 */
             }
             
             .nav-links {
-                display: none;
+                display: none;      /* 모바일에서는 네비게이션 메뉴 숨김 */
             }
             
             .search-box {
-                flex-direction: column;
+                flex-direction: column;  /* 모바일에서는 세로 배치 */
             }
         }
     </style>
 </head>
 <body>
+    <!-- 
+    헤더 영역 
+    - 페이지 상단의 네비게이션 바
+    -->
     <header class="header">
         <div class="container">
             <nav class="nav">
+                <!-- 로고 (클릭하면 맨 위로) -->
                 <a href="#" class="logo">TrendScope</a>
+                <!-- 네비게이션 메뉴 -->
                 <ul class="nav-links">
                     <li><a href="#features">기능</a></li>
                     <li><a href="#demo">데모</a></li>
@@ -260,14 +378,23 @@
         </div>
     </header>
 
+    <!-- 
+    히어로 섹션 
+    - 페이지의 메인 제목과 설명, 주요 버튼이 있는 영역
+    -->
     <section class="hero">
         <div class="container">
             <h1>크리에이터를 위한<br>트렌드 분석 플랫폼</h1>
             <p>YouTube, Instagram의 최신 트렌드를 AI로 분석하여<br>콘텐츠 전략을 최적화하세요</p>
+            <!-- 데모 섹션으로 이동하는 버튼 -->
             <a href="#demo" class="cta-button">무료로 시작하기</a>
         </div>
     </section>
 
+    <!-- 
+    기능 소개 섹션 
+    - 서비스의 주요 기능 4가지를 소개
+    -->
     <section class="features" id="features">
         <div class="container">
             <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">주요 기능</h2>
@@ -275,25 +402,30 @@
                 AI 기반 트렌드 분석으로 크리에이터의 성공을 돕습니다
             </p>
             
+            <!-- 기능 카드들을 그리드로 배치 -->
             <div class="features-grid">
+                <!-- 기능 1: 실시간 트렌드 분석 -->
                 <div class="feature-card">
                     <div class="feature-icon">📈</div>
                     <h3>실시간 트렌드 분석</h3>
                     <p>YouTube, Instagram의 최신 트렌드를 실시간으로 분석하여 인기 키워드와 주제를 제공합니다.</p>
                 </div>
                 
+                <!-- 기능 2: 맞춤형 콘텐츠 추천 -->
                 <div class="feature-card">
                     <div class="feature-icon">🎯</div>
                     <h3>맞춤형 콘텐츠 추천</h3>
                     <p>AI가 여러분의 채널 특성을 분석하여 최적의 콘텐츠 아이디어를 제안합니다.</p>
                 </div>
                 
+                <!-- 기능 3: 경쟁자 분석 -->
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
                     <h3>경쟁자 분석</h3>
                     <p>동일 분야 크리에이터들의 전략을 분석하여 차별화된 접근 방법을 찾아드립니다.</p>
                 </div>
                 
+                <!-- 기능 4: 성과 예측 -->
                 <div class="feature-card">
                     <div class="feature-icon">🚀</div>
                     <h3>성과 예측</h3>
@@ -303,6 +435,10 @@
         </div>
     </section>
 
+    <!-- 
+    데모 섹션 
+    - 실제로 키워드를 입력해서 트렌드 분석을 체험해볼 수 있는 영역
+    -->
     <section class="demo-section" id="demo">
         <div class="container">
             <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">
@@ -310,12 +446,20 @@
             </h2>
             
             <div class="demo-container">
+                <!-- 검색 입력 영역 -->
                 <div class="search-box">
+                    <!-- 키워드 입력창 -->
                     <input type="text" class="search-input" placeholder="분석하고 싶은 키워드를 입력하세요 (예: 쿠킹, 게임, 뷰티)" id="searchInput">
+                    <!-- 분석 실행 버튼 -->
                     <button class="search-button" onclick="analyzeTrend()">분석하기</button>
                 </div>
                 
+                <!-- 
+                검색 결과 영역 
+                - 처음에는 숨겨져 있다가 검색하면 나타남
+                -->
                 <div class="results hidden" id="results">
+                    <!-- 인스타그램 트렌드 결과 -->
                     <div class="result-card">
                         <h4>📱 인스타그램 트렌드</h4>
                         <p>검색량: <span id="instaViews">-</span></p>
@@ -323,6 +467,7 @@
                         <p>추천도: <span id="instaRecommend">-</span></p>
                     </div>
                     
+                    <!-- 유튜브 트렌드 결과 -->
                     <div class="result-card">
                         <h4>🎥 유튜브 트렌드</h4>
                         <p>검색량: <span id="youtubeViews">-</span></p>
@@ -330,11 +475,13 @@
                         <p>추천도: <span id="youtubeRecommend">-</span></p>
                     </div>
                     
+                    <!-- AI 추천 결과 -->
                     <div class="result-card">
                         <h4>🤖 AI 추천</h4>
                         <p id="aiRecommendation">키워드를 입력하면 AI가 맞춤형 추천을 제공합니다.</p>
                     </div>
                     
+                    <!-- 최적 업로드 시간 추천 -->
                     <div class="result-card">
                         <h4>📅 최적 업로드 시간</h4>
                         <p id="bestTime">분석 중...</p>
@@ -344,6 +491,10 @@
         </div>
     </section>
 
+    <!-- 
+    푸터 영역 
+    - 페이지 하단의 저작권 정보
+    -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 TrendScope. 모든 권리 보유.</p>
@@ -351,21 +502,35 @@
         </div>
     </footer>
 
+    <!-- 
+    JavaScript 시작 
+    - 웹사이트의 동적 기능을 구현하는 코드
+    -->
     <script>
+        /* 
+        트렌드 분석 함수 
+        - 사용자가 키워드를 입력하고 "분석하기" 버튼을 클릭했을 때 실행
+        */
         function analyzeTrend() {
+            // 입력창에서 키워드 가져오기 (앞뒤 공백 제거)
             const keyword = document.getElementById('searchInput').value.trim();
+            
+            // 키워드가 비어있으면 알림 표시하고 종료
             if (!keyword) {
                 alert('키워드를 입력해주세요!');
                 return;
             }
 
-            // 결과 섹션 표시
+            // 결과 섹션을 화면에 표시 (hidden 클래스 제거)
             document.getElementById('results').classList.remove('hidden');
             
-            // 가짜 데이터로 시뮬레이션 (실제로는 API 호출)
+            // 실제 API 호출 대신 가짜 데이터로 시뮬레이션
+            // 1초 후에 결과 표시 (실제 API 호출 시간을 시뮬레이션)
             setTimeout(() => {
+                // 가짜 데이터 생성
                 const mockData = generateMockData(keyword);
                 
+                // 생성된 데이터를 화면에 표시
                 document.getElementById('instaViews').textContent = mockData.instagram.views;
                 document.getElementById('instaPopularity').textContent = mockData.instagram.popularity;
                 document.getElementById('instaRecommend').textContent = mockData.instagram.recommend;
@@ -379,11 +544,21 @@
             }, 1000);
         }
 
+        /* 
+        가짜 데이터 생성 함수 
+        - 실제 API가 없으므로 임시로 랜덤한 데이터를 생성
+        */
         function generateMockData(keyword) {
+            // 랜덤한 조회수 생성 (100,000 ~ 1,100,000)
             const views = Math.floor(Math.random() * 1000000) + 100000;
+            
+            // 랜덤한 인기도 선택
             const popularity = ['🔥 매우 높음', '⭐ 높음', '📈 보통', '📉 낮음'][Math.floor(Math.random() * 4)];
+            
+            // 랜덤한 추천도 선택
             const recommend = ['✅ 추천', '⚠️ 주의', '❌ 비추천'][Math.floor(Math.random() * 3)];
             
+            // AI 추천 메시지 목록
             const recommendations = [
                 `"${keyword}" 관련 콘텐츠는 현재 상승 트렌드입니다. 지금이 제작 적기!`,
                 `"${keyword}" 키워드로 튜토리얼 형태의 콘텐츠를 추천합니다.`,
@@ -436,3 +611,7 @@
     </script>
 </body>
 </html>
+
+
+
+
