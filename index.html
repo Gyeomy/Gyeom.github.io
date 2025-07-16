@@ -1,613 +1,4188 @@
 <!DOCTYPE html>
+<!-- HTML 문서의 시작을 알리는 선언문 -->
 <html lang="ko">
+<!-- 웹페이지의 언어를 한국어로 설정 -->
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TrendScope - 크리에이터 트렌드 분석 | YouTube 인스타그램 AI 분석</title>
+    <!-- 웹페이지의 머리 부분 - 메타데이터와 스타일 정보가 들어감 -->
     
-    <!-- 
-    SEO(검색 엔진 최적화) 메타태그들 
-    - 검색 엔진이 웹사이트를 더 잘 찾을 수 있도록 도와주는 정보들
-    -->
+    <!-- 문자 인코딩을 UTF-8로 설정 (한글, 이모지 등이 깨지지 않게 함) -->
+    <meta charset="UTF-8">
+    
+    <!-- 모바일 기기에서 웹페이지가 제대로 보이도록 설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 웹페이지의 제목 (브라우저 탭에 표시됨) -->
+    <title>Trendpick - 크리에이터 트렌드 분석 | YouTube 인스타그램 AI 분석</title>
+    
+    <!-- 검색 엔진 최적화(SEO)를 위한 메타태그들 -->
     <meta name="description" content="YouTube, Instagram 트렌드를 AI로 분석하여 크리에이터의 콘텐츠 전략을 최적화하는 플랫폼입니다.">
     <meta name="keywords" content="유튜브 트렌드, 인스타그램 분석, 크리에이터 도구, AI 트렌드 분석, 콘텐츠 마케팅">
-    <meta name="author" content="TrendScope">
+    <meta name="author" content="Trendpick">
     <meta name="robots" content="index, follow">
-    
-    <!-- 
-    Open Graph 태그 (소셜미디어 공유용) 
-    - 페이스북, 카카오톡 등에서 링크 공유할 때 보이는 미리보기 정보
-    -->
-    <meta property="og:title" content="TrendScope - 크리에이터 트렌드 분석">
+
+    <!-- 소셜미디어 공유 시 보여질 정보 (페이스북, 카카오톡 등) -->
+    <meta property="og:title" content="Trendpick - 크리에이터 트렌드 분석">
     <meta property="og:description" content="YouTube, Instagram 트렌드를 AI로 분석하여 크리에이터의 콘텐츠 전략을 최적화하는 플랫폼입니다.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://yoursite.com">
     <meta property="og:image" content="https://yoursite.com/og-image.jpg">
-    
-    <!-- 
-    트위터 카드 정보 
-    - 트위터에서 링크 공유할 때 보이는 미리보기 정보
-    -->
+
+    <!-- 트위터 공유 시 보여질 정보 -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TrendScope - 크리에이터 트렌드 분석">
+    <meta name="twitter:title" content="Trendpick - 크리에이터 트렌드 분석">
     <meta name="twitter:description" content="YouTube, Instagram 트렌드를 AI로 분석하여 크리에이터의 콘텐츠 전략을 최적화하는 플랫폼입니다.">
-    
-    <!-- 
-    구조화된 데이터 (JSON-LD 형식)
-    - 검색 엔진이 웹사이트 내용을 더 정확하게 이해할 수 있도록 도와주는 정보
-    -->
+
+    <!-- 구글 검색 결과에 더 자세한 정보를 제공하는 구조화된 데이터 -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebApplication",
-        "name": "TrendScope",
+        "name": "Trendpick",
         "description": "YouTube, Instagram 트렌드를 AI로 분석하여 크리에이터의 콘텐츠 전략을 최적화하는 플랫폼",
         "url": "https://yoursite.com",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web Browser"
     }
     </script>
-    
-    <!-- 
-    CSS 스타일 시작
-    - 웹사이트의 디자인과 레이아웃을 정의하는 부분
-    -->
+
+    <!-- CSS 스타일 - 웹페이지의 디자인을 담당하는 코드 -->
     <style>
-        /* 
-        전체 요소 기본 설정 초기화
-        - 모든 HTML 요소의 기본 여백, 패딩을 0으로 설정
-        - box-sizing: border-box는 요소의 크기 계산 방식을 통일
-        */
+        /* 모든 요소의 기본 여백과 패딩을 0으로 설정 */
         * {
-            margin: 0;           /* 외부 여백 제거 */
-            padding: 0;          /* 내부 여백 제거 */
-            box-sizing: border-box;  /* 테두리와 패딩을 포함한 크기 계산 */
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box; /* 요소의 크기 계산 방식을 설정 */
         }
-
-        /* 
-        전체 페이지 기본 스타일
-        - 폰트, 색상, 배경 등 전체적인 디자인 설정
-        */
-        body {
-            /* 시스템 폰트 우선 사용 (macOS, Windows, Linux 순으로 최적화) */
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;    /* 줄 간격 설정 */
-            color: #333;         /* 기본 텍스트 색상 (어두운 회색) */
-            /* 그라데이션 배경 (보라색 계열) */
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;   /* 최소 높이를 화면 전체 높이로 설정 */
+        
+        /* 반응형 웹사이트를 위한 기본 설정 */
+        html {
+            font-size: 16px; /* 기본 폰트 크기 설정 */
+            scroll-behavior: smooth; /* 부드러운 스크롤 */
         }
-
-        /* 
-        콘텐츠 컨테이너 
-        - 내용물을 중앙에 배치하고 최대 너비 제한
-        */
-        .container {
-            max-width: 1200px;  /* 최대 너비 제한 */
-            margin: 0 auto;     /* 좌우 중앙 정렬 */
-            padding: 0 20px;    /* 좌우 여백 */
-        }
-
-        /* 
-        헤더 스타일 
-        - 상단 네비게이션 바의 디자인
-        */
-        .header {
-            /* 반투명 배경 효과 */
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);    /* 배경 흐림 효과 */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);  /* 하단 테두리 */
-            padding: 1rem 0;    /* 상하 여백 */
-            position: sticky;   /* 스크롤해도 상단에 고정 */
-            top: 0;            /* 상단에 붙이기 */
-            z-index: 1000;     /* 다른 요소들 위에 표시 */
-        }
-
-        /* 
-        네비게이션 바 레이아웃 
-        - 로고와 메뉴를 양쪽 끝에 배치
-        */
-        .nav {
-            display: flex;              /* 플렉스 박스 사용 */
-            justify-content: space-between;  /* 양쪽 끝에 배치 */
-            align-items: center;        /* 세로 중앙 정렬 */
-        }
-
-        /* 
-        로고 스타일 
-        - 왼쪽 상단의 사이트 이름
-        */
-        .logo {
-            font-size: 1.8rem;   /* 글자 크기 */
-            font-weight: bold;   /* 굵은 글씨 */
-            color: white;        /* 흰색 글자 */
-            text-decoration: none;  /* 밑줄 제거 */
-        }
-
-        /* 
-        네비게이션 링크들 
-        - 오른쪽 상단의 메뉴 항목들
-        */
-        .nav-links {
-            display: flex;       /* 가로로 나열 */
-            list-style: none;    /* 목록 점 제거 */
-            gap: 2rem;          /* 항목 간 간격 */
-        }
-
-        .nav-links a {
-            color: white;               /* 흰색 링크 */
-            text-decoration: none;      /* 밑줄 제거 */
-            transition: opacity 0.3s;   /* 투명도 변화 애니메이션 */
-        }
-
-        .nav-links a:hover {
-            opacity: 0.8;              /* 마우스 올렸을 때 약간 투명하게 */
-        }
-
-        /* 
-        메인 히어로 섹션 
-        - 페이지 상단의 주요 내용 영역
-        */
-        .hero {
-            text-align: center;   /* 텍스트 중앙 정렬 */
-            padding: 5rem 0;      /* 상하 여백 */
-            color: white;         /* 흰색 텍스트 */
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;    /* 큰 제목 크기 */
-            margin-bottom: 1rem;  /* 아래 여백 */
-            font-weight: 700;     /* 매우 굵은 글씨 */
-        }
-
-        .hero p {
-            font-size: 1.3rem;    /* 설명 글자 크기 */
-            margin-bottom: 2rem;  /* 아래 여백 */
-            opacity: 0.9;         /* 약간 투명하게 */
-        }
-
-        /* 
-        CTA(Call To Action) 버튼 
-        - 사용자의 행동을 유도하는 주요 버튼
-        */
-        .cta-button {
-            background: #ff6b6b;     /* 빨간 배경 */
-            color: white;            /* 흰색 텍스트 */
-            padding: 1rem 2rem;      /* 내부 여백 */
-            border: none;            /* 테두리 제거 */
-            border-radius: 50px;     /* 둥근 모서리 */
-            font-size: 1.1rem;       /* 글자 크기 */
-            font-weight: 600;        /* 굵은 글씨 */
-            cursor: pointer;         /* 마우스 포인터 모양 */
-            transition: all 0.3s;    /* 모든 변화에 애니메이션 적용 */
-            text-decoration: none;   /* 밑줄 제거 */
-            display: inline-block;   /* 인라인 블록 요소로 표시 */
-        }
-
-        .cta-button:hover {
-            background: #ff5252;     /* 마우스 올렸을 때 더 진한 빨간색 */
-            transform: translateY(-2px);  /* 위로 2px 이동 */
-            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);  /* 그림자 효과 */
-        }
-
-        /* 
-        기능 소개 섹션 
-        - 서비스의 주요 기능들을 소개하는 영역
-        */
-        .features {
-            padding: 5rem 0;    /* 상하 여백 */
-            background: white;  /* 흰색 배경 */
-        }
-
-        /* 
-        기능 카드들을 그리드로 배치 
-        - 반응형 그리드 레이아웃 사용
-        */
-        .features-grid {
-            display: grid;  /* 그리드 레이아웃 사용 */
-            /* 최소 300px, 최대 1fr(남은 공간 균등 분배)로 자동 배치 */
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;           /* 카드 간 간격 */
-            margin-top: 3rem;    /* 위쪽 여백 */
-        }
-
-        /* 
-        개별 기능 카드 스타일 
-        - 각 기능을 설명하는 카드 디자인
-        */
-        .feature-card {
-            background: #f8f9fa;        /* 연한 회색 배경 */
-            padding: 2rem;              /* 내부 여백 */
-            border-radius: 15px;        /* 둥근 모서리 */
-            text-align: center;         /* 텍스트 중앙 정렬 */
-            transition: transform 0.3s; /* 변형 애니메이션 */
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);  /* 마우스 올렸을 때 위로 5px 이동 */
-        }
-
-        .feature-icon {
-            font-size: 3rem;       /* 아이콘 크기 */
-            margin-bottom: 1rem;   /* 아래 여백 */
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;     /* 제목 크기 */
-            margin-bottom: 1rem;   /* 아래 여백 */
-            color: #333;           /* 어두운 회색 */
-        }
-
-        /* 
-        데모 섹션 
-        - 실제 서비스를 체험해볼 수 있는 영역
-        */
-        .demo-section {
-            padding: 5rem 0;    /* 상하 여백 */
-            /* 그라데이션 배경 (반대 방향) */
-            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-            color: white;       /* 흰색 텍스트 */
-        }
-
-        /* 
-        데모 컨테이너 
-        - 데모 기능을 담는 반투명 박스
-        */
-        .demo-container {
-            background: rgba(255, 255, 255, 0.1);  /* 반투명 배경 */
-            padding: 2rem;                         /* 내부 여백 */
-            border-radius: 15px;                   /* 둥근 모서리 */
-            backdrop-filter: blur(10px);           /* 배경 흐림 효과 */
-        }
-
-        /* 
-        검색 박스 
-        - 검색 입력창과 버튼을 나란히 배치
-        */
-        .search-box {
-            display: flex;        /* 플렉스 박스 사용 */
-            gap: 1rem;           /* 요소 간 간격 */
-            margin-bottom: 2rem; /* 아래 여백 */
-        }
-
-        /* 
-        검색 입력창 
-        - 사용자가 키워드를 입력하는 필드
-        */
-        .search-input {
-            flex: 1;             /* 남은 공간을 모두 차지 */
-            padding: 1rem;       /* 내부 여백 */
-            border: none;        /* 테두리 제거 */
-            border-radius: 10px; /* 둥근 모서리 */
-            font-size: 1rem;     /* 글자 크기 */
-        }
-
-        /* 
-        검색 버튼 
-        - 검색을 실행하는 버튼
-        */
-        .search-button {
-            background: #ff6b6b;  /* 빨간 배경 */
-            color: white;         /* 흰색 텍스트 */
-            padding: 1rem 2rem;   /* 내부 여백 */
-            border: none;         /* 테두리 제거 */
-            border-radius: 10px;  /* 둥근 모서리 */
-            cursor: pointer;      /* 마우스 포인터 모양 */
-            font-weight: 600;     /* 굵은 글씨 */
-        }
-
-        /* 
-        검색 결과 영역 
-        - 분석 결과를 표시하는 카드들
-        */
-        .results {
-            display: grid;  /* 그리드 레이아웃 */
-            /* 최소 250px로 자동 배치 */
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;           /* 카드 간 간격 */
-            margin-top: 2rem;    /* 위쪽 여백 */
-        }
-
-        /* 
-        개별 결과 카드 
-        - 각 분석 결과를 보여주는 카드
-        */
-        .result-card {
-            background: rgba(255, 255, 255, 0.1);  /* 반투명 배경 */
-            padding: 1.5rem;                       /* 내부 여백 */
-            border-radius: 10px;                   /* 둥근 모서리 */
-            border: 1px solid rgba(255, 255, 255, 0.2);  /* 연한 테두리 */
-        }
-
-        /* 
-        푸터 영역 
-        - 페이지 하단의 정보 영역
-        */
-        .footer {
-            background: #333;      /* 어두운 배경 */
-            color: white;          /* 흰색 텍스트 */
-            text-align: center;    /* 텍스트 중앙 정렬 */
-            padding: 2rem 0;       /* 상하 여백 */
-        }
-
-        /* 
-        숨기기 클래스 
-        - 요소를 화면에서 숨길 때 사용
-        */
-        .hidden {
-            display: none;
-        }
-
-        /* 
-        반응형 디자인 (모바일 대응) 
-        - 화면 크기가 768px 이하일 때 적용되는 스타일
-        */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;  /* 모바일에서는 제목 크기 축소 */
+        
+        /* 터치 디바이스를 위한 최적화 */
+        @media (hover: none) and (pointer: coarse) {
+            /* 터치 디바이스에서 호버 효과 제거 */
+            .nav-links a:hover,
+            .cta-button:hover,
+            .search-button:hover,
+            .trend-button:hover,
+            .feature-card:hover,
+            .result-card:hover,
+            .recommendation-item:hover,
+            .trend-item:hover,
+            .competitor-item:hover,
+            .prediction-item:hover,
+            .summary-card:hover,
+            .detail-video-item:hover,
+            .popup-recommendation-item:hover {
+                transform: none;
+                box-shadow: inherit;
             }
             
-            .nav-links {
-                display: none;      /* 모바일에서는 네비게이션 메뉴 숨김 */
+            /* 터치 디바이스에서 더 큰 터치 영역 */
+            .nav-links a,
+            .cta-button,
+            .search-button,
+            .trend-button {
+                min-height: 44px; /* 터치 최소 크기 */
+                min-width: 44px;
+            }
+            
+            /* 터치 디바이스에서 입력창 크기 조정 */
+            .search-input,
+            .recommendation-input input,
+            .competitor-input input,
+            .prediction-input input {
+                font-size: 16px; /* iOS에서 줌 방지 */
+                min-height: 44px;
+            }
+        }
+
+        /* 웹페이지 전체 배경과 기본 스타일 설정 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; /* 폰트 설정 */
+            line-height: 1.7; /* 줄 간격 설정 */
+            color: #ffffff; /* 글자 색상을 흰색으로 설정 */
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%); /* 검정색 계열 그라데이션 배경 */
+            min-height: 100vh; /* 최소 높이를 화면 전체로 설정 */
+            font-size: 16px; /* 기본 글자 크기 */
+        }
+
+        /* 웹페이지 내용을 중앙에 배치하고 최대 너비 제한 */
+        .container {
+            max-width: 2000px; /* 최대 너비를 2000px로 변경 */
+            margin: 0 auto; /* 좌우 중앙 정렬 */
+            padding: 0 30px; /* 좌우 여백 증가 */
+        }
+        
+        /* 섹션별 시각적 구분을 위한 공통 스타일 */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 68, 68, 0.3), transparent);
+            margin: 0;
+            border: none;
+        }
+        
+        /* 섹션 간격 조정 */
+        section {
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* 섹션 내부 여백 통일 */
+        section .container {
+            padding: 6rem 30px;
+        }
+
+        /* 상단 네비게이션 바 스타일 */
+        .header {
+            background: rgba(0, 0, 0, 0.95); /* 더 진한 검정색 배경 */
+            backdrop-filter: blur(15px); /* 배경 블러 효과 강화 */
+            border-bottom: 3px solid #ff4444; /* 하단에 붉은색 테두리 강화 */
+            padding: 1.2rem 0; /* 상하 여백 */
+            position: fixed; /* 상단에 고정 */
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000; /* 다른 요소들 위에 표시 */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 4px 20px rgba(255, 68, 68, 0.3); /* 그림자 강화 */
+        }
+        
+        /* 메인 콘텐츠에 상단 여백 추가 */
+        body {
+            padding-top: 80px;
+        }
+
+        /* 네비게이션 내부 요소들을 가로로 배치 */
+        .nav {
+            display: flex; /* 가로 배치 */
+            justify-content: space-between; /* 양쪽 끝에 배치 */
+            align-items: center; /* 세로 중앙 정렬 */
+        }
+        
+        /* 햄버거 메뉴 버튼 (모바일용) */
+        .hamburger {
+            display: none; /* 기본적으로 숨김 */
+            flex-direction: column;
+            cursor: pointer;
+            padding: 0.5rem;
+            background: none;
+            border: none;
+            color: white;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        /* 햄버거 메뉴 활성화 상태 */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* 로고 SVG 및 텍스트 스타일 (Pretendard, 굵기 400, 세련된 자간) */
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.01em;
+            font-family: 'Pretendard', 'Noto Sans KR', Arial, sans-serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 0.06em;
+            text-shadow: 0 0 10px rgba(255, 68, 68, 0.2);
+            line-height: 1.08;
+        }
+        .logo-svg-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            width: 100%;
+            margin-bottom: -0.32em;
+        }
+        .logo-svg {
+            height: 1.5em;
+            width: auto;
+            min-width: 120px;
+            max-width: 210px;
+            flex-shrink: 0;
+            display: block;
+        }
+        .logo-text {
+            font-family: inherit;
+            font-size: 1em;
+            font-weight: 400;
+            letter-spacing: 0.06em;
+            line-height: 1;
+            margin-top: 0;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+        }
+        .logo-trend, .logo-pick {
+            color: #fff;
+            font-family: inherit;
+            font-weight: 400;
+            font-size: 1em;
+            letter-spacing: 0.06em;
+            margin-right: 0.08em;
+            filter: brightness(1.1);
+        }
+        .logo-pick {
+            margin-right: 0;
+        }
+        @media (max-width: 900px) {
+            .logo {
+                font-size: 1.3rem;
+            }
+            .logo-svg {
+                height: 1em;
+                min-width: 70px;
+            }
+        }
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.05rem;
+            }
+            .logo-svg {
+                height: 0.7em;
+                min-width: 40px;
+            }
+        }
+
+        /* 네비게이션 메뉴 리스트 */
+        .nav-links {
+            display: flex; /* 가로 배치 */
+            list-style: none; /* 리스트 점 제거 */
+            gap: 1.5rem; /* 메뉴 간격 조정 */
+            flex-wrap: nowrap; /* 줄바꿈 방지 */
+            align-items: center; /* 세로 중앙 정렬 */
+        }
+
+        /* 네비게이션 메뉴 링크 */
+        .nav-links a {
+            color: #ffffff; /* 흰색 */
+            text-decoration: none; /* 밑줄 제거 */
+            font-weight: 500; /* 글씨 굵기 */
+            transition: all 0.3s; /* 부드러운 변화 효과 */
+            padding: 0.8rem 1.5rem; /* 여백 */
+            border-radius: 25px; /* 둥근 모서리 */
+            border: 2px solid transparent; /* 투명한 테두리 */
+            white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+            text-align: center; /* 텍스트 중앙 정렬 */
+            line-height: 1; /* 줄 간격 최소화 */
+        }
+
+        /* 마우스를 올렸을 때 메뉴 스타일 */
+        .nav-links a:hover {
+            color: #ff4444; /* 붉은색 */
+            background: rgba(255, 68, 68, 0.1); /* 붉은색 배경 */
+            border-color: #ff4444; /* 붉은색 테두리 */
+            box-shadow: 0 0 15px rgba(255, 68, 68, 0.3); /* 붉은색 글로우 */
+        }
+
+        /* 메인 히어로 섹션 (첫 화면) */
+        .hero {
+            text-align: center;
+            padding: 8rem 0;
+            color: white;
+            /* 검정색 계열의 그라데이션 배경 */
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #2d2d2d 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        /* 히어로 배경 효과 - 여러 겹의 원, 별, 라인 등 추가 */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            /* 검정색 계열의 은은한 원 효과만 남김 */
+            background:
+                radial-gradient(circle at 30% 20%, rgba(255, 68, 68, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(255, 68, 68, 0.04) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* 히어로 섹션의 제목 */
+        .hero h1 {
+            font-size: 4rem; /* 큰 글자 크기 */
+            margin-bottom: 2rem; /* 아래 여백 */
+            font-weight: 700; /* 굵은 글씨 */
+            line-height: 1.2; /* 줄 간격 */
+            text-shadow: 0 0 20px rgba(255, 68, 68, 0.5); /* 붉은색 글로우 */
+            background: linear-gradient(45deg, #ffffff, #ff4444); /* 흰색에서 붉은색 그라데이션 */
+            -webkit-background-clip: text; /* 텍스트에만 그라데이션 적용 */
+            -webkit-text-fill-color: transparent; /* 텍스트 색상을 투명하게 */
+            background-clip: text;
+        }
+
+        /* 히어로 섹션의 설명글 - 가독성 강화 */
+        .hero p {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #fff;
+            text-shadow: 0 2px 12px rgba(0,0,0,0.45);
+            line-height: 1.7;
+            letter-spacing: 0.01em;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 3.2rem;
+            opacity: 1;
+            text-align: center;
+        }
+
+        /* 메인 버튼 스타일 */
+        .cta-button {
+            background: linear-gradient(135deg, #ff4444, #ff6666); /* 붉은색 그라데이션 */
+            color: white; /* 흰색 글자 */
+            padding: 1.5rem 3rem; /* 여백 */
+            border: none; /* 테두리 제거 */
+            border-radius: 50px; /* 둥근 모서리 */
+            font-size: 1.2rem; /* 글자 크기 */
+            font-weight: 600; /* 글씨 굵기 */
+            cursor: pointer; /* 마우스 포인터 */
+            transition: all 0.3s; /* 부드러운 변화 */
+            text-decoration: none; /* 밑줄 제거 */
+            display: inline-block; /* 인라인 블록 */
+            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4); /* 붉은색 그림자 */
+            border: 2px solid rgba(255, 255, 255, 0.2); /* 흰색 테두리 */
+            white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+            text-align: center; /* 텍스트 중앙 정렬 */
+            line-height: 1; /* 줄 간격 최소화 */
+        }
+
+        /* 버튼에 마우스를 올렸을 때 */
+        .cta-button:hover {
+            background: linear-gradient(135deg, #ff6666, #ff8888); /* 더 밝은 붉은색 */
+            transform: translateY(-3px); /* 위로 이동 */
+            box-shadow: 0 12px 35px rgba(255, 68, 68, 0.6); /* 더 큰 그림자 */
+            border-color: rgba(255, 255, 255, 0.4); /* 더 진한 테두리 */
+        }
+
+        /* Canva 스타일 주요 기능 섹션 리디자인 */
+        .features {
+            padding: 7rem 0;
+            background: #fff;
+        }
+        .features .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .features h2 {
+            color: #23232a;
+            font-size: 2.7rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.01em;
+        }
+        .features p {
+            color: #23232a;
+            font-size: 1.15rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2.5rem;
+        }
+        .feature-card {
+            background: #fff;
+            border-radius: 28px;
+            box-shadow: 0 8px 32px rgba(30, 34, 90, 0.10), 0 1.5px 6px rgba(255, 68, 68, 0.07);
+            padding: 2.7rem 2.2rem 2.2rem 2.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 390px;
+            transition: box-shadow 0.25s, transform 0.18s;
+            position: relative;
+        }
+        .feature-card:hover {
+            box-shadow: 0 16px 48px rgba(255, 68, 68, 0.18), 0 4px 16px rgba(30, 34, 90, 0.10);
+            transform: translateY(-7px) scale(1.025);
+        }
+        .feature-icon {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            margin-bottom: 0;
+            background: none;
+            border-radius: 0;
+            box-shadow: none;
+            color: inherit;
+        }
+        .feature-icon span {
+            width: 100%;
+            height: 100%;
+            font-size: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .feature-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #23232a;
+            margin-bottom: 1.1rem;
+            text-align: center;
+            letter-spacing: 0.01em;
+        }
+        .feature-card p {
+            color: #23232a;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            text-align: center;
+            margin-bottom: 2.2rem;
+            min-height: 60px;
+        }
+        .feature-button {
+            background: linear-gradient(90deg, #ff4444 60%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            border-radius: 22px;
+            padding: 0.85rem 2.1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(255, 68, 68, 0.10);
+            margin-top: auto;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.18s;
+        }
+        .feature-button:hover {
+            background: linear-gradient(90deg, #ff6666 60%, #a084e8 100%);
+            box-shadow: 0 6px 18px rgba(255, 68, 68, 0.18);
+            transform: translateY(-2px) scale(1.04);
+        }
+
+        /* 데모 섹션 (검색 기능) */
+        .demo-section {
+            padding: 8rem 0; /* 상하 여백 증가 */
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); /* 가장 어두운 배경 */
+            color: white; /* 흰색 글자 */
+            position: relative;
+        }
+        
+        /* 데모 섹션 배경 효과 */
+        .demo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255, 68, 68, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(255, 68, 68, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .demo-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 데모 컨테이너 */
+        .demo-container {
+            background: linear-gradient(135deg, rgba(45, 45, 45, 0.95) 0%, rgba(61, 61, 61, 0.95) 100%);
+            padding: 2.5rem 2rem;
+            border-radius: 30px;
+            backdrop-filter: blur(20px);
+            border: 3px solid rgba(255, 68, 68, 0.4);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18), 0 4px 16px rgba(255, 68, 68, 0.10);
+            position: relative;
+            overflow: hidden;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 260px;
+            height: 260px;
+            transition: height 0.3s;
+        }
+        .demo-container.showing-results {
+            height: 350px;
+        }
+        
+        /* 데모 컨테이너 배경 효과 */
+        .demo-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 68, 68, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .demo-container > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 검색창 컨테이너 - 넉넉하게 길게 */
+        .search-box {
+            display: flex; /* 가로 배치 */
+            gap: 1.5rem; /* 간격 */
+            margin-bottom: 3rem; /* 아래 여백 */
+            justify-content: center; /* 가운데 정렬 */
+            align-items: center; /* 세로 중앙 정렬 */
+            width: calc(100% - 200px); /* demo-container보다 200px 작게 */
+            max-width: calc(1000px - 200px); /* demo-container의 max-width가 1000px일 때 */
+            margin: 0 auto;
+            background: #f5f6fa; /* 옅은 회색 배경 */
+            border-radius: 18px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            overflow: visible;
+        }
+
+        /* 검색 입력창 - 넉넉하게 길게 */
+        .search-input {
+            flex: 1 1 0;
+            min-width: 0;
+            width: 100%;
+            box-sizing: border-box;
+            padding: 1.5rem 2rem; /* 여백 증가 */
+            border: 3px solid rgba(255, 68, 68, 0.3); /* 붉은색 테두리 */
+            border-radius: 20px; /* 둥근 모서리 */
+            font-size: 1.2rem; /* 글자 크기 */
+            background: rgba(255, 255, 255, 0.1); /* 반투명 흰색 배경 */
+            color: white; /* 흰색 글자 */
+            backdrop-filter: blur(10px); /* 배경 블러 */
+            transition: all 0.3s ease; /* 부드러운 변화 */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* 그림자 */
+            min-width: 700px; /* 최소 너비 증가 */
+            max-width: 900px; /* 최대 너비 추가 */
+            width: 100%; /* 반응형으로 100% */
+        }
+
+        /* 검색창 플레이스홀더 (힌트 텍스트) */
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.6); /* 반투명 흰색 */
+        }
+
+        /* 검색창에 포커스가 맞춰졌을 때 */
+        .search-input:focus {
+            outline: none; /* 기본 테두리 제거 */
+            border-color: #ff4444; /* 붉은색 테두리 */
+            background: rgba(255, 255, 255, 0.15); /* 더 밝은 배경 */
+            box-shadow: 0 12px 35px rgba(255, 68, 68, 0.3); /* 붉은색 그림자 */
+            transform: translateY(-2px); /* 위로 이동 */
+        }
+
+        /* 검색 버튼 */
+        .search-button {
+            display: flex; /* 버튼 안의 내용을 가로/세로 모두 가운데 정렬 */
+            align-items: center; /* 세로 가운데 정렬 */
+            justify-content: center; /* 가로 가운데 정렬 */
+            flex: 0 0 30px;
+            width: 30px;
+            min-width: 30px;
+            max-width: 30px;
+            background: linear-gradient(135deg, #ff4444, #ff6666); /* 붉은색 그라데이션 */
+            color: white; /* 흰색 글자 */
+            padding: 1.5rem 3rem; /* 여백 증가 */
+            border: none; /* 테두리 제거 */
+            border-radius: 20px; /* 둥근 모서리 */
+            cursor: pointer; /* 마우스 포인터 */
+            font-weight: 600; /* 글씨 굵기 */
+            font-size: 30pt; /* 돋보기 이모티콘 크기 */
+            transition: all 0.3s ease; /* 부드러운 변화 */
+            box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4); /* 붉은색 그림자 */
+            min-width: 30px; /* 최소 너비 30px로 고정 */
+            width: 30px; /* 폭 30px로 고정 */
+            border: 2px solid rgba(255, 255, 255, 0.2); /* 흰색 테두리 */
+            white-space: nowrap; /* 텍스트 줄바꿈 방지 */
+            text-align: center; /* 텍스트 중앙 정렬 */
+            line-height: 1; /* 줄 간격 최소화 */
+        }
+
+        /* 검색 버튼에 마우스를 올렸을 때 */
+        .search-button:hover {
+            background: linear-gradient(135deg, #ff6666, #ff8888); /* 더 밝은 붉은색 */
+            transform: translateY(-2px); /* 위로 이동 */
+            box-shadow: 0 12px 35px rgba(255, 68, 68, 0.6); /* 더 큰 그림자 */
+            border-color: rgba(255, 255, 255, 0.4); /* 더 진한 테두리 */
+        }
+
+        /* 버튼이 눌렸을 때 */
+        .search-button:active {
+            transform: translateY(0); /* 원래 위치로 */
+        }
+
+        /* 버튼이 비활성화되었을 때 */
+        .search-button:disabled {
+            background: #666666; /* 회색 */
+            cursor: not-allowed; /* 클릭 불가 */
+            transform: none; /* 변화 없음 */
+            box-shadow: none; /* 그림자 제거 */
+        }
+
+        /* 입력 창 섹션별 스타일 개선 */
+        .recommendation-input,
+        .competitor-input,
+        .prediction-input,
+        .category-input {
+            display: flex; /* 가로 배치 */
+            gap: 1.5rem; /* 간격 */
+            margin-bottom: 3rem; /* 아래 여백 */
+            justify-content: center; /* 가운데 정렬 */
+            align-items: center; /* 세로 중앙 정렬 */
+            max-width: 900px; /* 최대 너비 증가 */
+            margin-left: auto; /* 좌우 중앙 정렬 */
+            margin-right: auto;
+            background: linear-gradient(135deg, rgba(45, 45, 45, 0.8) 0%, rgba(61, 61, 61, 0.8) 100%); /* 어두운 반투명 배경 */
+            padding: 3rem; /* 여백 */
+            border-radius: 25px; /* 둥근 모서리 */
+            backdrop-filter: blur(15px); /* 배경 블러 */
+            border: 2px solid rgba(255, 68, 68, 0.3); /* 붉은색 테두리 */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* 그림자 */
+        }
+
+        /* 입력 창 라벨 추가 */
+        .input-label {
+            color: white; /* 흰색 */
+            font-size: 18pt; /* 글자 크기: 18포인트로 변경 */
+            font-weight: 600; /* 글씨 굵기 */
+            margin-bottom: 2rem; /* 아래 여백 */
+            text-align: center; /* 가운데 정렬 */
+            text-shadow: 0 0 15px rgba(255, 68, 68, 0.5); /* 붉은색 글로우 */
+        }
+
+        /* 입력 창 강조 효과 */
+        .input-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1 1 0;
+            width: 100%;
+            min-width: 0;
+            overflow: hidden;
+            position: relative; /* 상대적 위치 */
+            max-width: 700px; /* 최대 너비 변경 */
+        }
+
+        /* 입력창 주변에 그라데이션 테두리 효과 */
+        .input-container::before {
+            content: ''; /* 가상 요소 내용 */
+            position: absolute; /* 절대적 위치 */
+            top: -3px; /* 위쪽 여백 */
+            left: -3px; /* 왼쪽 여백 */
+            right: -3px; /* 오른쪽 여백 */
+            bottom: -3px; /* 아래쪽 여백 */
+            background: linear-gradient(45deg, #ff4444, #ff6666, #ff8888, #ff4444); /* 붉은색 그라데이션 */
+            border-radius: 23px; /* 둥근 모서리 */
+            z-index: -1; /* 뒤쪽에 배치 */
+            opacity: 0; /* 처음에는 보이지 않음 */
+            transition: opacity 0.3s ease; /* 부드러운 변화 */
+        }
+
+        /* 입력창에 포커스가 맞춰졌을 때 그라데이션 테두리 표시 */
+        .input-container:focus-within::before {
+            opacity: 1; /* 보이게 함 */
+        }
+
+        /* 추천, 경쟁자, 예측 입력창 스타일 */
+        .recommendation-input input,
+        .competitor-input input,
+        .prediction-input input,
+        .category-input input {
+            flex: 1; /* 남은 공간 모두 차지 */
+            padding: 1.5rem 2rem; /* 여백 */
+            border: none; /* 테두리 제거 */
+            border-radius: 20px; /* 둥근 모서리 */
+            font-size: 1.2rem; /* 글자 크기 */
+            background: rgba(255, 255, 255, 0.1); /* 반투명 흰색 배경 */
+            color: white; /* 흰색 글자 */
+            backdrop-filter: blur(10px); /* 배경 블러 */
+            border: 2px solid rgba(255, 68, 68, 0.3); /* 붉은색 테두리 */
+            min-width: 600px; /* 최소 너비 설정 */
+        }
+
+        /* 입력창 플레이스홀더 스타일 */
+        .recommendation-input input::placeholder,
+        .competitor-input input::placeholder,
+        .prediction-input input::placeholder,
+        .category-input input::placeholder {
+            color: rgba(255, 255, 255, 0.6); /* 반투명 흰색 */
+        }
+
+        /* 입력창에 포커스가 맞춰졌을 때 */
+        .recommendation-input input:focus,
+        .competitor-input input:focus,
+        .prediction-input input:focus,
+        .category-input input:focus {
+            outline: none; /* 기본 테두리 제거 */
+            border-color: #ff4444; /* 붉은색 테두리 */
+            background: rgba(255, 255, 255, 0.15); /* 더 밝은 배경 */
+            box-shadow: 0 12px 35px rgba(255, 68, 68, 0.3); /* 붉은색 그림자 */
+            transform: translateY(-2px); /* 위로 이동 */
+        }
+
+        /* 로딩 애니메이션 컨테이너 */
+        .loading {
+            display: none; /* 처음에는 보이지 않음 */
+            text-align: center; /* 가운데 정렬 */
+            margin: 3rem 0; /* 상하 여백 */
+        }
+
+        /* 로딩 스피너 (돌아가는 원) */
+        .spinner {
+            border: 4px solid rgba(255, 68, 68, 0.3); /* 붉은색 테두리 */
+            border-radius: 50%; /* 원형 */
+            border-top: 4px solid #ff4444; /* 위쪽만 진한 붉은색 */
+            width: 50px; /* 너비 */
+            height: 50px; /* 높이 */
+            animation: spin 1s linear infinite; /* 1초마다 계속 돌아가는 애니메이션 */
+            margin: 0 auto 1.5rem; /* 중앙 정렬, 아래 여백 */
+        }
+
+        /* 스피너가 돌아가는 애니메이션 정의 */
+        @keyframes spin {
+            0% { transform: rotate(0deg); } /* 0도에서 시작 */
+            100% { transform: rotate(360deg); } /* 360도까지 회전 */
+        }
+
+        /* 결과 카드들을 그리드로 배치 */
+        .results {
+            display: grid; /* 그리드 배치 */
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 반응형 그리드 */
+            gap: 2rem; /* 카드 간격 */
+            margin-top: 3rem; /* 위 여백 */
+        }
+
+        /* 개별 결과 카드 */
+        .result-card {
+            background: linear-gradient(135deg, rgba(45, 45, 45, 0.9) 0%, rgba(61, 61, 61, 0.9) 100%); /* 어두운 반투명 배경 */
+            padding: 2.5rem; /* 여백 */
+            border-radius: 20px; /* 둥근 모서리 */
+            border: 2px solid rgba(255, 68, 68, 0.3); /* 붉은색 테두리 */
+            backdrop-filter: blur(15px); /* 배경 블러 */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* 그림자 */
+        }
+
+        /* 결과 카드 제목 */
+        .result-card h4 {
+            margin-bottom: 1.5rem; /* 아래 여백 */
+            font-size: 1.4rem; /* 글자 크기 */
+            font-weight: 600; /* 글씨 굵기 */
+            color: white; /* 흰색 */
+            text-shadow: 0 0 10px rgba(255, 68, 68, 0.3); /* 붉은색 글로우 */
+        }
+
+        /* 결과 카드 내용 */
+        .result-card p {
+            margin-bottom: 1rem; /* 아래 여백 */
+            line-height: 1.6; /* 줄 간격 */
+            color: rgba(255, 255, 255, 0.9); /* 반투명 흰색 */
+        }
+
+        /* 에러 메시지 스타일 */
+        .error-message {
+            background: rgba(255, 68, 68, 0.1); /* 붉은색 반투명 배경 */
+            border: 2px solid rgba(255, 68, 68, 0.4); /* 붉은색 테두리 */
+            color: #ff4444; /* 붉은색 글자 */
+            padding: 1.5rem; /* 여백 */
+            border-radius: 15px; /* 둥근 모서리 */
+            margin-top: 2rem; /* 위 여백 */
+            text-align: center; /* 가운데 정렬 */
+            font-weight: 500; /* 글씨 굵기 */
+            box-shadow: 0 5px 15px rgba(255, 68, 68, 0.2); /* 붉은색 그림자 */
+        }
+
+        /* 하단 푸터 */
+        .footer {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); /* 어두운 그라데이션 */
+            color: white; /* 흰색 글자 */
+            text-align: center; /* 가운데 정렬 */
+            padding: 4rem 0; /* 상하 여백 증가 */
+            border-top: 3px solid #ff4444; /* 위쪽 붉은색 테두리 강화 */
+            position: relative;
+        }
+        
+        /* 푸터 배경 효과 */
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(255, 68, 68, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .footer .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 푸터 내용 */
+        .footer p {
+            margin-bottom: 0.8rem; /* 아래 여백 */
+            line-height: 1.6; /* 줄 간격 */
+            color: #cccccc; /* 연한 회색 */
+        }
+
+        /* 숨겨진 요소들 */
+        .hidden {
+            display: none; /* 보이지 않게 함 */
+        }
+
+        /* 새로운 섹션들의 컨테이너 */
+        .trend-analysis-container,
+        .recommendation-container,
+        .competitor-container,
+        .prediction-container {
+            max-width: 1200px; /* 최대 너비 */
+            margin: 0 auto; /* 중앙 정렬 */
+        }
+
+        /* 트렌드 버튼들을 가로로 배치 */
+        .trend-controls {
+            display: flex; /* 가로 배치 */
+            justify-content: center; /* 가운데 정렬 */
+            gap: 1.5rem; /* 버튼 간격 */
+            margin-bottom: 3rem; /* 아래 여백 */
+        }
+
+        /* 트렌드 버튼 스타일 */
+        .trend-button {
+            background: #fff;
+            color: #23232a !important;
+            border: 10px solid #23232a;
+            box-shadow: 0 2px 10px rgba(180, 180, 200, 0.08);
+            border-radius: 18px;
+            padding: 0.7rem 1.5rem;
+            font-weight: 700;
+            font-size: calc(1rem + 10pt);
+            text-decoration: none;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.18s;
+            cursor: pointer;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* 카테고리별 배경색도 모두 흰색으로 통일 */
+        .trend-button[data-category] { background: #fff !important; }
+
+        @media (max-width: 900px) {
+            .trend-button {
+                min-width: 0;
+                width: 100%;
+                max-width: 80px;
+                font-size: 1.1rem;
+                padding: 1.2rem 1rem;
+            }
+        }
+        @media (max-width: 480px) {
+            .trend-button {
+                font-size: 1rem;
+                padding: 1rem 0.7rem;
+                max-width: 80px;
+            }
+        }
+
+        /* 트렌드 버튼에 마우스를 올렸을 때 */
+        .trend-button:hover {
+            background: linear-gradient(135deg, #ffb3b3 0%, #ffeaea 100%);
+            box-shadow: 0 16px 48px rgba(255, 68, 68, 0.18), 0 4px 16px rgba(30, 34, 90, 0.10);
+            transform: translateY(-7px) scale(1.025);
+            color: #b24545;
+        }
+
+        /* 활성화된 트렌드 버튼 */
+        .trend-button.active {
+            background: linear-gradient(135deg, #28a745, #20c997); /* 초록색 그라데이션 */
+            border-color: #28a745; /* 초록색 테두리 */
+        }
+
+        /* 트렌드, 추천, 경쟁자, 예측 결과들을 그리드로 배치 */
+        .trend-grid,
+        .recommendation-grid,
+        .competitor-grid,
+        .prediction-grid {
+            display: grid; /* 그리드 배치 */
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 반응형 그리드 */
+            gap: 2rem; /* 카드 간격 */
+            margin-top: 3rem; /* 위 여백 */
+        }
+
+        /* 트렌드 아이템 카드 높이 통일 */
+        .trend-item {
+            display: flex; /* 가로 배치 */
+            flex-direction: column; /* 세로 방향 */
+            height: 100%; /* 전체 높이 */
+            min-height: 450px; /* 최소 높이 */
+        }
+
+        /* 트렌드 아이템 제목 */
+        .trend-item h4 {
+            flex: 1; /* 남은 공간 차지 */
+            display: -webkit-box; /* 웹킷 박스 */
+            -webkit-line-clamp: 2; /* 최대 2줄 */
+            -webkit-box-orient: vertical; /* 세로 방향 */
+            overflow: hidden; /* 넘치는 내용 숨김 */
+            text-overflow: ellipsis; /* 말줄임표 표시 */
+            line-height: 1.4; /* 줄 간격 */
+            margin-bottom: 1.5rem; /* 아래 여백 */
+        }
+
+        /* 추천 카드 높이 통일 및 크리에이터 친화적 디자인 */
+        .recommendation-item {
+            display: flex; /* 가로 배치 */
+            flex-direction: column; /* 세로 방향 */
+            height: 100%; /* 전체 높이 */
+            min-height: 600px; /* 최소 높이 */
+            border-radius: 25px; /* 둥근 모서리 */
+            overflow: hidden; /* 넘치는 내용 숨김 */
+            transition: all 0.3s ease; /* 부드러운 변화 */
+            position: relative; /* 상대적 위치 */
+        }
+
+        /* 추천 카드에 마우스를 올렸을 때 */
+        .recommendation-item:hover {
+            transform: translateY(-10px); /* 위로 이동 */
+            box-shadow: 0 20px 50px rgba(255, 68, 68, 0.3); /* 붉은색 그림자 */
+        }
+
+        /* 추천 카드 제목 */
+        .recommendation-item h4 {
+            display: -webkit-box; /* 웹킷 박스 */
+            -webkit-line-clamp: 2; /* 최대 2줄 */
+            -webkit-box-orient: vertical; /* 세로 방향 */
+            overflow: hidden; /* 넘치는 내용 숨김 */
+            text-overflow: ellipsis; /* 말줄임표 표시 */
+            line-height: 1.4; /* 줄 간격 */
+            font-size: 1.4rem; /* 글자 크기 */
+            font-weight: 700; /* 글씨 굵기 */
+        }
+
+        /* 추천 카드 타입별 배경색 - 검정색 계열로 통일 */
+        .recommendation-item.type-기본 {
+            background: linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%); /* 어두운 그라데이션 */
+            color: white; /* 흰색 글자 */
+            border: 2px solid #ff4444; /* 붉은색 테두리 */
+        }
+
+        .recommendation-item.type-입문 {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); /* 더 어두운 그라데이션 */
+            color: white; /* 흰색 글자 */
+            border: 2px solid #ff6666; /* 밝은 붉은색 테두리 */
+        }
+
+        .recommendation-item.type-트렌드 {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); /* 가장 어두운 그라데이션 */
+            color: white; /* 흰색 글자 */
+            border: 2px solid #ff8888; /* 더 밝은 붉은색 테두리 */
+        }
+
+        .recommendation-item.type-심화 {
+            background: linear-gradient(135deg, #2d2d2d 0%, #444444 100%); /* 중간 어두운 그라데이션 */
+            color: white; /* 흰색 글자 */
+            border: 2px solid #ff4444; /* 붉은색 테두리 */
+        }
+
+        .recommendation-item.type-리뷰 {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); /* 어두운 그라데이션 */
+            color: white; /* 흰색 글자 */
+            border: 2px solid #ff6666; /* 밝은 붉은색 테두리 */
+        }
+
+        .recommendation-item.type-시리즈 {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); /* 가장 어두운 그라데이션 */
+            color: white; /* 흰색 글자 */
+            border: 2px solid #ff8888; /* 더 밝은 붉은색 테두리 */
+        }
+
+        .recommendation-item.type-Q&A {
+            background: linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%); /* 어두운 그라데이션 */
+            color: white; /* 흰색 글자 */
+            border: 2px solid #ff4444; /* 붉은색 테두리 */
+        }
+
+        .recommendation-item.type-확장 {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); /* 어두운 그라데이션 */
+            color: white; /* 흰색 글자 */
+            border: 2px solid #ff6666; /* 밝은 붉은색 테두리 */
+        }
+
+        /* 분석 이유 섹션 스타일 */
+        .analysis-reason {
+            background: rgba(255, 68, 68, 0.1); /* 붉은색 반투명 배경 */
+            backdrop-filter: blur(10px); /* 배경 블러 */
+            border-radius: 15px; /* 둥근 모서리 */
+            padding: 1.5rem; /* 여백 */
+            margin: 1.5rem 0; /* 상하 여백 */
+            border-left: 4px solid #ff4444; /* 왼쪽 붉은색 테두리 */
+        }
+
+        /* 분석 이유 제목 */
+        .analysis-reason h5 {
+            color: inherit; /* 부모 요소 색상 상속 */
+            margin-bottom: 1rem; /* 아래 여백 */
+            font-weight: 600; /* 글씨 굵기 */
+        }
+
+        /* 분석 이유 내용 */
+        .analysis-reason p {
+            color: inherit; /* 부모 요소 색상 상속 */
+            opacity: 0.9; /* 투명도 */
+            line-height: 1.6; /* 줄 간격 */
+            margin: 0; /* 여백 제거 */
+        }
+
+        /* 영감 아이콘 */
+        .inspiration-icon {
+            position: absolute; /* 절대적 위치 */
+            top: 1.5rem; /* 위쪽 여백 */
+            right: 1.5rem; /* 오른쪽 여백 */
+            font-size: 1.8rem; /* 아이콘 크기 */
+            opacity: 0.7; /* 투명도 */
+            color: #ff4444; /* 붉은색 */
+        }
+
+        /* 크리에이터 친화적 태그 */
+        .creator-tag {
+            background: rgba(255, 68, 68, 0.2); /* 붉은색 반투명 배경 */
+            color: inherit; /* 부모 요소 색상 상속 */
+            padding: 0.5rem 1rem; /* 여백 */
+            border-radius: 25px; /* 둥근 모서리 */
+            font-size: 0.9rem; /* 글자 크기 */
+            margin: 0.3rem; /* 여백 */
+            display: inline-block; /* 인라인 블록 */
+            backdrop-filter: blur(5px); /* 배경 블러 */
+            border: 1px solid rgba(255, 68, 68, 0.4); /* 붉은색 테두리 */
+        }
+
+        /* 관련 영상 섹션 스타일 */
+        .related-videos-section {
+            margin-top: 1.5rem; /* 위 여백 */
+        }
+
+        /* 관련 영상 아이템 */
+        .related-video-item {
+            transition: all 0.3s ease; /* 부드러운 변화 */
+        }
+
+        /* 관련 영상에 마우스를 올렸을 때 */
+        .related-video-item:hover {
+            transform: translateX(8px); /* 오른쪽으로 이동 */
+            background: rgba(255, 68, 68, 0.1) !important; /* 붉은색 배경 */
+        }
+
+        /* 관련 영상이 클릭되었을 때 */
+        .related-video-item:active {
+            transform: translateX(4px); /* 적게 이동 */
+        }
+
+        /* 요약 팝업 스타일 */
+        .summary-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 235, 238, 0.18); /* 옅은 붉은색+회색 계열 반투명 배경 */
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            display: none;
+            overflow-y: auto;
+        }
+
+        .summary-popup.show {
+            display: block;
+        }
+
+        .summary-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 2rem auto;
+            background: linear-gradient(135deg, #fbeaec 0%, #f3f4f7 100%); /* 옅은 붉은색~회색 그라데이션 */
+            border-radius: 25px;
+            box-shadow: 0 8px 32px rgba(30, 34, 90, 0.10), 0 2px 8px rgba(30, 34, 90, 0.06);
+            overflow: hidden;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1.5px solid #e0e4ef;
+            z-index: 1001;
+        }
+
+        .summary-header {
+            background: linear-gradient(135deg, #fbeaec 0%, #f3f4f7 100%); /* 옅은 붉은색~회색 그라데이션 */
+            color: #23232a;
+            padding: 2.5rem 2rem 2rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .summary-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(30, 34, 90, 0.08);
+            border: none;
+            color: #23232a;
+            font-size: 1.8rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .summary-close:hover {
+            background: rgba(30, 34, 90, 0.16);
+            transform: scale(1.1);
+        }
+
+        .summary-body {
+            padding: 2.5rem 2rem 2rem 2rem;
+            background: linear-gradient(135deg, #fbeaec 0%, #f3f4f7 100%);
+        }
+
+        .summary-card {
+            background: #fff7f7;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 16px rgba(30, 34, 90, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1.5px solid #e0e4ef;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(30, 34, 90, 0.13);
+        }
+
+        .summary-card.type-기본,
+        .summary-card.type-입문,
+        .summary-card.type-트렌드,
+        .summary-card.type-심화,
+        .summary-card.type-리뷰,
+        .summary-card.type-시리즈,
+        .summary-card.type-Q&A,
+        .summary-card.type-확장 {
+            border-color: #e0bfc2;
+            background: #fff7f7;
+        }
+
+        .summary-card-title,
+        .summary-difficulty,
+        .summary-description,
+        .summary-expected-views,
+        .summary-type,
+        .summary-header,
+        .summary-close,
+        .summary-body,
+        .summary-card {
+            color: #23232a !important;
+        }
+
+        .summary-difficulty {
+            background: #fbeaec;
+            color: #23232a;
+        }
+
+        .summary-description {
+            color: #444 !important;
+        }
+
+        .summary-stats {
+            background: #fbeaec;
+            border: 1px solid #e0e4ef;
+            color: #23232a !important;
+        }
+
+        .summary-expected-views {
+            color: #b24545 !important;
+        }
+
+        .summary-type {
+            color: #6b6b7a !important;
+        }
+
+        .summary-tag {
+            background: #ffeaea !important; /* 옅은 붉은색 */
+            color: #23232a !important;
+            padding: 0.3rem 0.7rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        /* 요약 그리드 */
+        .summary-grid {
+            display: grid; /* 그리드 배치 */
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* 반응형 그리드 */
+            gap: 2rem; /* 카드 간격 */
+            margin-top: 2rem; /* 위 여백 */
+        }
+
+        /* 요약 카드 */
+        .summary-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 4px 16px rgba(30, 34, 90, 0.10);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1.5px solid #e0e4ef;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* 요약 카드에 마우스를 올렸을 때 */
+        .summary-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(30, 34, 90, 0.16);
+        }
+
+        /* 요약 카드 헤더 */
+        .summary-card-header {
+            display: flex; /* 가로 배치 */
+            align-items: center; /* 세로 중앙 정렬 */
+            margin-bottom: 1.5rem; /* 아래 여백 */
+        }
+
+        /* 요약 카드 제목 */
+        .summary-card-title {
+            flex: 1; /* 남은 공간 차지 */
+            font-size: 1.3rem; /* 글자 크기 */
+            font-weight: 700; /* 글씨 굵기 */
+            color: #ffffff; /* 흰색 */
+            margin: 0; /* 여백 제거 */
+        }
+
+        /* 요약 난이도 표시 */
+        .summary-difficulty {
+            background: #e3e8f7;
+            color: #23232a;
+            padding: 0.4rem 1rem; /* 여백 */
+            border-radius: 20px; /* 둥근 모서리 */
+            font-size: 0.9rem; /* 글자 크기 */
+            font-weight: bold; /* 글씨 굵기 */
+        }
+
+        /* 요약 설명 */
+        .summary-description {
+            color: #444;
+            line-height: 1.6; /* 줄 간격 */
+            margin-bottom: 1.5rem; /* 아래 여백 */
+        }
+
+        /* 요약 통계 */
+        .summary-stats {
+            display: flex; /* 가로 배치 */
+            justify-content: space-between; /* 양쪽 끝에 배치 */
+            align-items: center; /* 세로 중앙 정렬 */
+            background: #f0f2fa; /* 연한 회색 배경 */
+            padding: 1rem; /* 여백 */
+            border-radius: 15px; /* 둥근 모서리 */
+            margin-bottom: 1.5rem; /* 아래 여백 */
+            border: 1px solid #e0e4ef; /* 연한 회색 테두리 */
+        }
+
+        /* 예상 조회수 */
+        .summary-expected-views {
+            font-size: 1.2rem; /* 글자 크기 */
+            font-weight: bold; /* 글씨 굵기 */
+            color: #3b4cca; /* 진한 파란색 */
+        }
+
+        /* 요약 타입 */
+        .summary-type {
+            color: #6b6b7a; /* 연한 회색 */
+            font-size: 1rem; /* 글자 크기 */
+        }
+
+        /* 요약 태그들 */
+        .summary-tags {
+            display: flex; /* 가로 배치 */
+            flex-wrap: wrap; /* 줄바꿈 가능 */
+            gap: 0.4rem; /* 태그 간격 */
+        }
+
+        /* 요약 태그 */
+        .summary-tag {
+            background: linear-gradient(135deg, #ff4444, #ff6666); /* 붉은색 그라데이션 */
+            color: white; /* 흰색 글자 */
+            padding: 0.3rem 0.7rem; /* 여백 */
+            border-radius: 15px; /* 둥근 모서리 */
+            font-size: 0.8rem; /* 글자 크기 */
+        }
+
+        /* 요약 클릭 힌트 */
+        .summary-click-hint {
+            position: absolute; /* 절대적 위치 */
+            bottom: 1rem; /* 아래쪽 여백 */
+            right: 1rem; /* 오른쪽 여백 */
+            background: rgba(255, 68, 68, 0.8); /* 붉은색 반투명 배경 */
+            color: white; /* 흰색 글자 */
+            padding: 0.4rem 0.8rem; /* 여백 */
+            border-radius: 15px; /* 둥근 모서리 */
+            font-size: 0.8rem; /* 글자 크기 */
+            opacity: 0.8; /* 투명도 */
+        }
+
+        /* 세부 팝업 스타일 */
+        .detail-popup {
+            position: fixed; /* 화면에 고정 */
+            top: 0; /* 맨 위 */
+            left: 0; /* 맨 왼쪽 */
+            width: 100%; /* 전체 너비 */
+            height: 100%; /* 전체 높이 */
+            background: rgba(0, 0, 0, 0.95); /* 거의 검정색 반투명 배경 */
+            backdrop-filter: blur(15px); /* 배경 블러 */
+            z-index: 10001; /* 다른 요소들 위에 표시 */
+            display: none; /* 처음에는 보이지 않음 */
+            overflow-y: auto; /* 세로 스크롤 가능 */
+        }
+
+        /* 세부 팝업이 보일 때 */
+        .detail-popup.show {
+            display: block; /* 보이게 함 */
+        }
+
+        /* 세부 팝업 내용 */
+        .detail-content {
+            position: relative; /* 상대적 위치 */
+            max-width: 900px; /* 최대 너비 */
+            margin: 2rem auto; /* 중앙 정렬 */
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); /* 어두운 그라데이션 배경 */
+            border-radius: 25px; /* 둥근 모서리 */
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.7); /* 그림자 */
+            overflow: hidden; /* 넘치는 내용 숨김 */
+            max-height: 90vh; /* 최대 높이 */
+            overflow-y: auto; /* 세로 스크롤 */
+            border: 2px solid #ff4444; /* 붉은색 테두리 */
+            z-index: 1001; /* 헤더보다 위에 표시 */
+        }
+
+        /* 세부 팝업 헤더 */
+        .detail-header {
+            background: linear-gradient(135deg, #ff4444 0%, #ff6666 100%); /* 붉은색 그라데이션 */
+            color: white; /* 흰색 글자 */
+            padding: 3rem; /* 여백 */
+            text-align: center; /* 가운데 정렬 */
+            position: relative; /* 상대적 위치 */
+        }
+
+        /* 세부 팝업 닫기 버튼 */
+        .detail-close {
+            position: absolute; /* 절대적 위치 */
+            top: 1.5rem; /* 위쪽 여백 */
+            right: 1.5rem; /* 오른쪽 여백 */
+            background: rgba(255, 255, 255, 0.2); /* 반투명 흰색 배경 */
+            border: none; /* 테두리 제거 */
+            color: white; /* 흰색 글자 */
+            font-size: 1.8rem; /* 글자 크기 */
+            width: 50px; /* 너비 */
+            height: 50px; /* 높이 */
+            border-radius: 50%; /* 원형 */
+            cursor: pointer; /* 마우스 포인터 */
+            transition: all 0.3s ease; /* 부드러운 변화 */
+        }
+
+        /* 세부 닫기 버튼에 마우스를 올렸을 때 */
+        .detail-close:hover {
+            background: rgba(255, 255, 255, 0.3); /* 더 진한 배경 */
+            transform: scale(1.1); /* 크기 확대 */
+        }
+
+        /* 세부 팝업 본문 */
+        .detail-body {
+            padding: 3rem; /* 여백 */
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); /* 어두운 그라데이션 */
+        }
+
+        /* 세부 섹션 */
+        .detail-section {
+            background: linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%); /* 어두운 그라데이션 */
+            border-radius: 20px; /* 둥근 모서리 */
+            padding: 2rem; /* 여백 */
+            margin: 2rem 0; /* 상하 여백 */
+            border-left: 5px solid #ff4444; /* 왼쪽 붉은색 테두리 */
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* 그림자 */
+        }
+
+        /* 세부 섹션 제목 */
+        .detail-section h4 {
+            color: #ff4444; /* 붉은색 */
+            margin-bottom: 1.5rem; /* 아래 여백 */
+            font-weight: 600; /* 글씨 굵기 */
+            font-size: 1.3rem; /* 글자 크기 */
+        }
+
+        /* 세부 섹션 내용 */
+        .detail-section p {
+            color: #ffffff; /* 흰색 */
+            line-height: 1.6; /* 줄 간격 */
+            margin: 0; /* 여백 제거 */
+        }
+
+        /* 세부 영상들 */
+        .detail-videos {
+            background: linear-gradient(135deg, rgba(255, 68, 68, 0.1) 0%, rgba(255, 102, 102, 0.1) 100%); /* 붉은색 반투명 배경 */
+            border-radius: 20px; /* 둥근 모서리 */
+            padding: 2rem; /* 여백 */
+            margin: 2rem 0; /* 상하 여백 */
+            border: 1px solid rgba(255, 68, 68, 0.3); /* 붉은색 테두리 */
+        }
+
+        /* 세부 영상 아이템 */
+        .detail-video-item {
+            display: flex; /* 가로 배치 */
+            align-items: center; /* 세로 중앙 정렬 */
+            margin: 1.5rem 0; /* 상하 여백 */
+            padding: 1.5rem; /* 여백 */
+            background: linear-gradient(135deg, #2d2d2d 0%, #3d3d3d 100%); /* 어두운 그라데이션 */
+            border-radius: 15px; /* 둥근 모서리 */
+            cursor: pointer; /* 마우스 포인터 */
+            transition: all 0.3s ease; /* 부드러운 변화 */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* 그림자 */
+            border: 1px solid rgba(255, 68, 68, 0.2); /* 붉은색 테두리 */
+        }
+
+        /* 세부 영상에 마우스를 올렸을 때 */
+        .detail-video-item:hover {
+            transform: translateX(10px); /* 오른쪽으로 이동 */
+            box-shadow: 0 10px 25px rgba(255, 68, 68, 0.3); /* 붉은색 그림자 */
+            border-color: #ff4444; /* 붉은색 테두리 */
+        }
+
+        /* 세부 영상 썸네일 */
+        .detail-video-thumbnail {
+            width: 120px; /* 너비 */
+            height: 90px; /* 높이 */
+            object-fit: cover; /* 이미지 비율 유지 */
+            border-radius: 10px; /* 둥근 모서리 */
+            margin-right: 1.5rem; /* 오른쪽 여백 */
+            border: 2px solid rgba(255, 68, 68, 0.3); /* 붉은색 테두리 */
+        }
+
+        /* 세부 영상 정보 */
+        .detail-video-info {
+            flex: 1; /* 남은 공간 차지 */
+            min-width: 0; /* 최소 너비 */
+        }
+
+        /* 세부 영상 제목 */
+        .detail-video-title {
+            font-size: 1.1rem; /* 글자 크기 */
+            font-weight: 600; /* 글씨 굵기 */
+            margin: 0; /* 여백 제거 */
+            overflow: hidden; /* 넘치는 내용 숨김 */
+            text-overflow: ellipsis; /* 말줄임표 표시 */
+            white-space: nowrap; /* 줄바꿈 안함 */
+            color: #ffffff; /* 흰색 */
+        }
+
+        /* 세부 영상 채널 */
+        .detail-video-channel {
+            font-size: 1rem; /* 글자 크기 */
+            color: #bbbbbb; /* 연한 회색 */
+            margin: 0.5rem 0; /* 상하 여백 */
+        }
+
+        /* 세부 영상 통계 */
+        .detail-video-stats {
+            display: flex; /* 가로 배치 */
+            gap: 2rem; /* 간격 */
+            font-size: 0.9rem; /* 글자 크기 */
+            color: #999999; /* 회색 */
+        }
+
+        /* 세부 태그들 */
+        .detail-tags {
+            display: flex; /* 가로 배치 */
+            flex-wrap: wrap; /* 줄바꿈 가능 */
+            gap: 0.6rem; /* 태그 간격 */
+            margin-top: 2rem; /* 위 여백 */
+        }
+
+        /* 세부 태그 */
+        .detail-tag {
+            background: linear-gradient(135deg, #ff4444, #ff6666); /* 붉은색 그라데이션 */
+            color: white; /* 흰색 글자 */
+            padding: 0.5rem 1rem; /* 여백 */
+            border-radius: 20px; /* 둥근 모서리 */
+            font-size: 0.9rem; /* 글자 크기 */
+            font-weight: 500; /* 글씨 굵기 */
+        }
+
+        @media (max-width: 768px) {
+            .summary-content,
+            .detail-content {
+                margin: 1rem;
+                max-height: 95vh;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .summary-header,
+            .detail-header {
+                padding: 1.5rem;
+            }
+
+            .summary-body,
+            .detail-body {
+                padding: 1rem;
+            }
+        }
+
+        /* 추천 결과 팝업 스타일 */
+        .recommendation-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 10000;
+            display: none;
+            overflow-y: auto;
+        }
+
+        .recommendation-popup.show {
+            display: block;
+        }
+
+        .popup-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            max-height: 90vh;
+            overflow-y: auto;
+            z-index: 1001; /* 헤더보다 위에 표시 */
+        }
+
+        .popup-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .popup-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .popup-body {
+            padding: 2rem;
+        }
+
+        .popup-recommendation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .popup-recommendation-item {
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .popup-recommendation-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .popup-recommendation-item.type-기본 {
+            border-color: #667eea;
+        }
+
+        .popup-recommendation-item.type-입문 {
+            border-color: #4facfe;
+        }
+
+        .popup-recommendation-item.type-트렌드 {
+            border-color: #fa709a;
+        }
+
+        .popup-recommendation-item.type-심화 {
+            border-color: #a8edea;
+        }
+
+        .popup-recommendation-item.type-리뷰 {
+            border-color: #ffecd2;
+        }
+
+        .popup-recommendation-item.type-시리즈 {
+            border-color: #ff9a9e;
+        }
+
+        .popup-recommendation-item.type-Q&A {
+            border-color: #a18cd1;
+        }
+
+        .popup-recommendation-item.type-확장 {
+            border-color: #ffecd2;
+        }
+
+        .popup-analysis-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .popup-analysis-section h6 {
+            color: #667eea;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .popup-related-videos {
+            background: #e7f3ff;
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .popup-video-item {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+            padding: 0.8rem;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .popup-video-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup-video-thumbnail {
+            width: 80px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-right: 0.8rem;
+        }
+
+        .popup-video-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .popup-video-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #2c3e50;
+        }
+
+        .popup-video-channel {
+            font-size: 0.8rem;
+            color: #5a6c7d;
+            margin: 0.2rem 0;
+        }
+
+        .popup-video-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.7rem;
+            color: #7f8c8d;
+        }
+
+        .popup-tags {
+            margin-top: 1rem;
+        }
+
+        .popup-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            margin: 0.2rem;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .popup-content {
+                margin: 1rem;
+                max-height: 95vh;
+            }
+
+            .popup-recommendation-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .popup-header {
+                padding: 1.5rem;
+            }
+
+            .popup-body {
+                padding: 1rem;
+            }
+        }
+
+        .trend-item,
+        .recommendation-item,
+        .competitor-item,
+        .prediction-item {
+            background: white;
+            border-radius: 15px;
+            padding: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #e9ecef;
+        }
+
+        .trend-item:hover,
+        .recommendation-item:hover,
+        .competitor-item:hover,
+        .prediction-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* 클릭 가능한 영상 카드 스타일 */
+        .trend-item[onclick] {
+            transition: all 0.3s ease;
+        }
+
+        .trend-item[onclick]:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+            border: 2px solid #ff6b6b;
+        }
+
+        .trend-item[onclick]:active {
+            transform: translateY(-2px);
+        }
+
+        /* 경쟁자 분석의 클릭 가능한 영상 스타일 */
+        .competitor-item div[onclick] {
+            transition: all 0.3s ease;
+        }
+
+        .competitor-item div[onclick]:hover {
+            background: rgba(255, 107, 107, 0.1);
+            border-left: 3px solid #ff5252 !important;
+            transform: translateX(5px);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .video-stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 0.8rem 0;
+            font-size: 0.9rem;
+            color: #5a6c7d;
+        }
+
+        .trend-score {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            text-align: center;
+            margin: 0.8rem 0;
+        }
+
+        .recommendation-category {
+            background: #e7f3ff;
+            color: #0066cc;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin: 0.2rem;
+            display: inline-block;
+        }
+
+        .competitor-rank {
+            background: #ff6b6b;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+        }
+
+        .prediction-chart {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+        }
+
+        .prediction-bar {
+            background: linear-gradient(90deg, #28a745, #20c997);
+            height: 20px;
+            border-radius: 10px;
+            margin: 0.8rem 0;
+            transition: width 1s ease-in-out;
+        }
+
+        .trend-loading,
+        .recommendation-loading,
+        .competitor-loading,
+        .prediction-loading {
+            text-align: center;
+            margin: 2rem 0;
+            color: white;
+        }
+
+        /* 반응형 웹사이트를 위한 미디어 쿼리들 */
+        
+        /* 중간 크기 화면 (1024px ~ 1200px) */
+        @media (min-width: 1024px) and (max-width: 1200px) {
+            .container {
+                padding: 0 25px;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
+            }
+            
+            .trend-grid,
+            .recommendation-grid,
+            .competitor-grid,
+            .prediction-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
             }
             
             .search-box {
-                flex-direction: column;  /* 모바일에서는 세로 배치 */
+                max-width: 900px;
             }
+            
+            .search-input {
+                min-width: 600px;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .features h2 {
+                font-size: 3rem;
+            }
+        }
+        
+        /* 태블릿 크기 (768px ~ 1023px) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            
+            .trend-grid,
+            .recommendation-grid,
+            .competitor-grid,
+            .prediction-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            
+            .search-box {
+                max-width: 700px;
+            }
+            
+            .search-input {
+                min-width: 500px;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .features h2 {
+                font-size: 2.8rem;
+            }
+            
+            .demo-container {
+                padding: 3rem;
+            }
+        }
+        
+        /* 태블릿 크기 (768px 이하) */
+        @media (max-width: 768px) {
+            /* 컨테이너 여백 조정 */
+            .container {
+                padding: 0 20px;
+            }
+            
+            /* 헤더 반응형 */
+            .header {
+                padding: 1rem 0;
+            }
+            
+            /* 메인 콘텐츠 여백 조정 */
+            body {
+                padding-top: 70px;
+            }
+            
+            .nav {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            /* 햄버거 메뉴 표시 */
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 1rem 0;
+                border-top: 2px solid #ff4444;
+                box-shadow: 0 4px 20px rgba(255, 68, 68, 0.3);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 0.8rem 1.5rem;
+                border-radius: 0;
+                border: none;
+                margin: 0.3rem 1rem;
+                white-space: nowrap;
+                font-size: 0.9rem;
+            }
+            
+            /* 히어로 섹션 반응형 */
+            .hero {
+                padding: 4rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+                line-height: 1.3;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .cta-button {
+                padding: 1.2rem 2.5rem;
+                font-size: 1.1rem;
+            }
+            
+            /* 기능 섹션 반응형 */
+            .features {
+                padding: 4rem 0;
+            }
+            
+            .features h2 {
+                font-size: 2.2rem;
+            }
+            
+            .features p {
+                font-size: 1.1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .feature-card {
+                padding: 2rem;
+                min-height: 350px;
+            }
+            
+            .feature-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            
+            /* 데모 섹션 반응형 */
+            .demo-section {
+                padding: 4rem 0;
+            }
+            
+            .demo-container {
+                padding: 2rem;
+            }
+            
+            .search-box {
+                flex-direction: column;
+                gap: 1rem;
+                max-width: 100%;
+            }
+            
+            .search-input {
+                min-width: auto;
+                width: 100%;
+                font-size: 1rem;
+                padding: 1rem 1.5rem;
+            }
+            
+            .search-button {
+                width: 100%;
+                min-width: auto;
+                white-space: nowrap;
+                font-size: 1rem;
+                padding: 1.2rem 2rem;
+            }
+            
+            /* 입력창 섹션들 반응형 */
+            .recommendation-input,
+            .competitor-input,
+            .prediction-input {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 2rem;
+            }
+            
+            .recommendation-input input,
+            .competitor-input input,
+            .prediction-input input {
+                min-width: auto;
+                width: 100%;
+            }
+            
+            /* 트렌드 컨트롤 반응형 */
+            .trend-controls {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .trend-button {
+                width: 100%;
+                max-width: 300px;
+                white-space: nowrap;
+                font-size: 1rem;
+            }
+            
+            /* 그리드 레이아웃 반응형 */
+            .trend-grid,
+            .recommendation-grid,
+            .competitor-grid,
+            .prediction-grid,
+            .results {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            /* 결과 카드 반응형 */
+            .result-card {
+                padding: 2rem;
+            }
+            
+            /* 팝업 반응형 */
+            .summary-content,
+            .detail-content,
+            .popup-content {
+                margin: 1rem;
+                max-height: 95vh;
+            }
+            
+            .summary-grid,
+            .popup-recommendation-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .summary-header,
+            .detail-header,
+            .popup-header {
+                padding: 1.5rem;
+            }
+            
+            .summary-body,
+            .detail-body,
+            .popup-body {
+                padding: 1rem;
+            }
+        }
+        
+        /* 모바일 크기 (480px 이하) */
+        @media (max-width: 480px) {
+            /* 컨테이너 여백 더 줄이기 */
+            .container {
+                padding: 0 15px;
+            }
+            
+            /* 섹션 여백 조정 */
+            section .container {
+                padding: 3rem 15px;
+            }
+            
+            /* 헤더 위치 고정 */
+            .header {
+                position: fixed;
+                width: 100%;
+                z-index: 1000;
+                padding: 0.8rem 0;
+            }
+            
+            /* 메인 콘텐츠 여백 조정 */
+            body {
+                padding-top: 60px;
+            }
+            
+            /* 메인 콘텐츠에 상단 여백 추가 */
+            .hero {
+                padding: 3rem 0;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .nav-links {
+                gap: 0.5rem;
+            }
+            
+            .nav-links a {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.8rem;
+                white-space: nowrap;
+            }
+            
+            /* 히어로 섹션 더 컴팩트하게 */
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                white-space: nowrap;
+            }
+            
+            /* 기능 섹션 더 컴팩트하게 */
+            .features {
+                padding: 3rem 0;
+            }
+            
+            .features h2 {
+                font-size: 1.8rem;
+            }
+            
+            .features p {
+                font-size: 1rem;
+            }
+            
+            .feature-card {
+                padding: 1.5rem;
+                min-height: 320px;
+            }
+            
+            .feature-button {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.8rem;
+            }
+            
+            .feature-icon {
+                font-size: 3rem;
+            }
+            
+            .feature-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            /* 데모 섹션 더 컴팩트하게 */
+            .demo-section {
+                padding: 3rem 0;
+            }
+            
+            .demo-container {
+                padding: 1.5rem;
+            }
+            
+            .input-label {
+                font-size: 1.2rem;
+            }
+            
+            .search-input,
+            .recommendation-input input,
+            .competitor-input input,
+            .prediction-input input {
+                padding: 1.2rem 1.5rem;
+                font-size: 1rem;
+                min-width: auto;
+            }
+            
+            .search-button {
+                padding: 1.2rem 2rem;
+                font-size: 1rem;
+                white-space: nowrap;
+                min-width: auto;
+            }
+            
+            /* 입력창 섹션들 더 컴팩트하게 */
+            .recommendation-input,
+            .competitor-input,
+            .prediction-input {
+                padding: 1.5rem;
+            }
+            
+            /* 트렌드 버튼 더 컴팩트하게 */
+            .trend-button {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+                white-space: nowrap;
+            }
+            
+            /* 결과 카드 더 컴팩트하게 */
+            .result-card {
+                padding: 1.5rem;
+            }
+            
+            .result-card h4 {
+                font-size: 1.2rem;
+            }
+            
+            /* 팝업 더 컴팩트하게 */
+            .summary-header,
+            .detail-header,
+            .popup-header {
+                padding: 1rem;
+            }
+            
+            .summary-header h2,
+            .detail-header h2,
+            .popup-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .summary-body,
+            .detail-body,
+            .popup-body {
+                padding: 0.8rem;
+            }
+            
+            .summary-close,
+            .detail-close,
+            .popup-close {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* 매우 작은 모바일 (320px 이하) */
+        @media (max-width: 320px) {
+            .container {
+                padding: 0 10px;
+            }
+            
+            /* 섹션 여백 더 줄이기 */
+            section .container {
+                padding: 2rem 10px;
+            }
+            
+            /* 메인 콘텐츠 여백 조정 */
+            body {
+                padding-top: 50px;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 0.9rem;
+            }
+            
+            .features h2 {
+                font-size: 1.6rem;
+            }
+            
+            .feature-card {
+                padding: 1rem;
+                min-height: 300px;
+            }
+            
+            .feature-button {
+                padding: 0.6rem 1rem;
+                font-size: 0.8rem;
+            }
+            
+            .demo-container {
+                padding: 1rem;
+            }
+            
+            .search-input,
+            .recommendation-input input,
+            .competitor-input input,
+            .prediction-input input {
+                padding: 1rem 1.2rem;
+                font-size: 0.9rem;
+                min-width: auto;
+            }
+            
+            .search-button {
+                padding: 1rem 1.5rem;
+                font-size: 0.9rem;
+                white-space: nowrap;
+                min-width: auto;
+            }
+        }
+        
+        /* 가로 모드 (landscape) 대응 */
+        @media (max-height: 500px) and (orientation: landscape) {
+            /* 메인 콘텐츠 여백 조정 */
+            body {
+                padding-top: 50px;
+            }
+            
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .hero p {
+                margin-bottom: 1.5rem;
+            }
+            
+            .features,
+            .demo-section {
+                padding: 2rem 0;
+            }
+            
+            .demo-container {
+                padding: 1.5rem;
+            }
+            
+            .feature-card {
+                min-height: 280px;
+            }
+            
+            .search-box {
+                flex-direction: row;
+                gap: 1rem;
+            }
+            
+            .search-input {
+                min-width: 300px;
+            }
+        }
+        
+        /* 큰 화면 (1200px 이상) */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1600px;
+                padding: 0 40px;
+            }
+            
+            .hero h1 {
+                font-size: 4.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.5rem;
+                max-width: 800px;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 3rem;
+            }
+            
+            .trend-grid,
+            .recommendation-grid,
+            .competitor-grid,
+            .prediction-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+            }
+        }
+        
+        /* 중간 크기 화면 (900px ~ 1200px) */
+        @media (min-width: 900px) and (max-width: 1200px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-links a {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .search-box {
+                max-width: 800px;
+            }
+            
+            .search-input {
+                min-width: 550px;
+            }
+            
+            .features-grid {
+                gap: 2.5rem;
+            }
+            
+            .trend-grid,
+            .recommendation-grid,
+            .competitor-grid,
+            .prediction-grid {
+                gap: 2rem;
+            }
+        }
+        
+        /* 초대형 화면 (1600px 이상) */
+        @media (min-width: 1600px) {
+            .container {
+                max-width: 1800px;
+                padding: 0 50px;
+            }
+            
+            .hero h1 {
+                font-size: 5rem;
+            }
+            
+            .hero p {
+                font-size: 1.6rem;
+                max-width: 900px;
+            }
+            
+            .features-grid {
+                gap: 4rem;
+            }
+            
+            .trend-grid,
+            .recommendation-grid,
+            .competitor-grid,
+            .prediction-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 3rem;
+            }
+        }
+
+        /* 트렌드 분석 체험하기 섹션 레이아웃 (Canva 스타일) */
+        .demo-flex {
+            display: flex;
+            align-items: center;
+            gap: 3.5rem;
+            justify-content: center;
+        }
+        .demo-visual {
+            flex: 0 0 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 160px;
+        }
+        .demo-content {
+            flex: 1 1 0;
+            min-width: 260px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .demo-title {
+            font-size: 48pt;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1.1rem;
+            letter-spacing: 0.01em;
+        }
+        .demo-desc {
+            color: #bfc2c7;
+            font-size: 1.15rem;
+            margin-bottom: 2.2rem;
+            line-height: 1.7;
+        }
+        @media (max-width: 900px) {
+            .demo-flex {
+                flex-direction: column;
+                gap: 2.2rem;
+            }
+            .demo-visual {
+                margin-bottom: 0.5rem;
+            }
+            .demo-content {
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        /* 서비스형 기능 섹션 레이아웃 (Canva 스타일) */
+        .service-flex {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .service-visual {
+            flex: 0 0 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 180px;
+        }
+        .service-content {
+            align-items: flex-start !important;
+            text-align: left !important;
+            flex: 1 1 0;
+            min-width: 260px;
+            display: flex;
+            flex-direction: row;
+            gap: 50px !important; /* gap 값을 50px로 지정 */
+        }
+        .service-title {
+            margin-left: 0 !important;         /* 왼쪽 여백 없음 */
+            font-size: 48pt !important;        /* 글씨 크기 */
+            font-weight: 700 !important;       /* 굵은 글씨 */
+            margin-bottom: 0.5rem;             /* 아래 여백 */
+            letter-spacing: 0.01em;            /* 글자 간격 */
+            text-align: center !important;     /* 가운데 정렬 */
+            /* 그라데이션 효과: 위 100% → 아래 50% */
+            background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0.5) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        .service-desc {
+            margin-left: 0 !important; /* 설명도 왼쪽에 딱 붙도록 !important를 붙였어요 */
+            text-align: left !important; /* 설명 글씨도 무조건 왼쪽 정렬이 되도록 !important를 붙였어요 */
+            color: #bfc2c7;
+            font-size: 1.08rem;
+            margin-bottom: 16px !important;
+            line-height: 1.7;
+        }
+        .compact {
+            max-width: 350px;
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+        .search-input.compact {
+            font-size: 1rem;
+            padding: 0.7rem 1.1rem;
+            min-width: 0;
+            width: 100%;
+        }
+        .search-button.compact {
+            font-size: 1rem;
+            padding: 0.7rem 1.3rem;
+            min-width: 0;
+            width: auto;
+        }
+        .trend-controls.compact {
+            display: flex; /* 버튼들을 가로로 한 줄에 나란히 배치해요 */
+            flex-direction: row; /* 가로 방향(왼쪽→오른쪽)으로 정렬해요 */
+            justify-content: left; /* 버튼들을 가운데로 모아요 */
+            align-items: stretch; /* 버튼들의 세로 길이를 똑같이 맞춰요 */
+            gap: 32px; /* 버튼 사이의 간격을 32px로 통일 */
+            margin-left: 0; /* 왼쪽 여백을 없애요 */
+            margin-right: 0; /* 오른쪽 여백을 없애요 */
+            width: 100%; /* 웹사이트(부모) 크기에 맞춰서 길이가 늘어나거나 줄어요 */
+            max-width: 500px; /* 최대 길이는 1000px까지만 늘어나요 */
+            max-height: 250px;
+            overflow-x: auto; /* 가로로 내용이 넘치면 스크롤이 생겨요 */
+            flex-wrap: nowrap; /* 버튼들이 줄바꿈 없이 한 줄에만 있어요 */
+            scrollbar-width: none; /* (파이어폭스) 스크롤바를 화면에 안 보여줘요 */
+            -ms-overflow-style: none; /* (IE, 엣지) 스크롤바를 화면에 안 보여줘요 */
+            min-height: 100px; /* 영역의 최소 높이를 200px로 해요 */
+            min-width: 400px;
+        }
+        .trend-controls.compact::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        .trend-button {
+            background: linear-gradient(135deg, #fff6f6 0%, #ffeaea 100%);
+            color: #ff4444;
+            border: 2px solid #ffb3b3;
+            border-radius: 22px;
+            box-shadow: 0 8px 32px rgba(255, 68, 68, 0.08), 0 2px 8px rgba(255, 68, 68, 0.06);
+            padding: 2.7rem 2.2rem; /* 세로 padding 증가 */
+            font-size: 1.25rem;
+            font-weight: 700;
+            transition: box-shadow 0.18s, transform 0.15s, background 0.2s;
+            min-width: 220px;
+            max-width: 100%;
+            text-align: center;
+            cursor: pointer;
+            margin: 0;
+            max-height: 180px!important; /* 버튼의 최대 높이를 180px로 제한해요 */
+        }
+        .trend-button:hover {
+            background: linear-gradient(135deg, #ffb3b3 0%, #ffeaea 100%);
+            box-shadow: 0 16px 48px rgba(255, 68, 68, 0.18), 0 4px 16px rgba(30, 34, 90, 0.10);
+            transform: translateY(-7px) scale(1.025);
+            color: #b24545;
+        }
+        .recommendation-input.compact,
+        .competitor-input.compact {
+            flex-direction: row;
+            gap: 0.7rem;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        @media (max-width: 900px) {
+            .service-flex {
+                flex-direction: column;
+                gap: 2.2rem;
+            }
+            .service-visual {
+                margin-bottom: 0.5rem;
+            }
+            .service-content {
+                align-items: center;
+                text-align: center;
+            }
+            .compact {
+                max-width: 100%;
+            }
+        }
+
+        /* 주요 기능 섹션 카드 리디자인 (Canva 스타일) */
+        .features-title {
+            color: #fff;
+            font-size: 48pt;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            letter-spacing: 0.01em;
+        }
+        .features-desc {
+            color: #bfc2c7;
+            font-size: 1.15rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 2.5rem;
+        }
+        .feature-card {
+            background: #fff;
+            border-radius: 32px;
+            box-shadow: 0 8px 32px rgba(30, 34, 90, 0.10), 0 1.5px 6px rgba(255, 68, 68, 0.07);
+            padding: 2.7rem 2.2rem 2.2rem 2.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 390px;
+            transition: box-shadow 0.25s, transform 0.18s;
+            position: relative;
+        }
+        .feature-card:hover {
+            box-shadow: 0 16px 48px rgba(255, 68, 68, 0.18), 0 4px 16px rgba(30, 34, 90, 0.10);
+            transform: translateY(-7px) scale(1.025);
+        }
+        .feature-illustration {
+            width: 64px;
+            height: 64px;
+            margin-bottom: 2.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .feature-card h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: #23232a;
+            margin-bottom: 1.1rem;
+            text-align: center;
+            letter-spacing: 0.01em;
+        }
+        .feature-card p {
+            color: #6b6b7a;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            text-align: center;
+            margin-bottom: 2.2rem;
+            min-height: 60px;
+        }
+        .feature-button {
+            background: linear-gradient(90deg, #ff4444 60%, #764ba2 100%);
+            color: #fff;
+            border: none;
+            border-radius: 22px;
+            padding: 0.85rem 2.1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(255, 68, 68, 0.10);
+            margin-top: auto;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.18s;
+        }
+        .feature-button:hover {
+            background: linear-gradient(90deg, #ff6666 60%, #a084e8 100%);
+            box-shadow: 0 6px 18px rgba(255, 68, 68, 0.18);
+            transform: translateY(-2px) scale(1.04);
+        }
+
+        /* 주요 기능 섹션 Canva 스타일 레이아웃 */
+        .features-flex {
+            display: flex;
+            align-items: flex-start;
+            gap: 4.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .features-info {
+            flex: 0 0 370px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            margin-top: 1.5rem;
+        }
+        .features-icon {
+            margin-bottom: 1.2rem;
+        }
+        .features-title {
+            color: #23232a;
+            font-size: 2.7rem;
+            font-weight: 800;
+            text-align: left;
+            margin-bottom: 1.5rem;
+            line-height: 1.18;
+            letter-spacing: -0.01em;
+        }
+        .features-desc {
+            color: #6b6b7a;
+            font-size: 1.15rem;
+            text-align: left;
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            max-width: 420px;
+        }
+        .features-main-btn {
+            background: linear-gradient(90deg, #ff4444 0%, #ff7b7b 100%);
+            color: #fff;
+            border: none;
+            border-radius: 22px;
+            padding: 1.1rem 2.5rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(255, 68, 68, 0.10);
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.18s;
+        }
+        .features-main-btn:hover {
+            background: linear-gradient(90deg, #ff6666 0%, #ffb3b3 100%);
+            box-shadow: 0 6px 18px rgba(255, 68, 68, 0.18);
+            transform: translateY(-2px) scale(1.04);
+        }
+        .features-image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.1rem 1.1rem;
+            justify-items: center;
+        }
+        .feature-img-card {
+            background: linear-gradient(135deg, #ffb3b3 0%, #e0e0e0 100%) !important;
+            border-radius: 20px;
+            box-shadow: 0 4px 16px rgba(255, 179, 179, 0.12);
+            border: 2px solid #e0e4ea;
+            padding: 2.2rem 1.2rem 1.5rem 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 13em;
+            height: 10em;
+            min-width: 8em;
+            min-height: 6em;
+            max-width: 100%;
+            max-height: 12em;
+            transition: box-shadow 0.22s, transform 0.15s, border 0.18s;
+            position: relative;
+        }
+        .feature-img-card:hover {
+            box-shadow: 0 16px 48px rgba(255, 68, 68, 0.22), 0 8px 24px rgba(30, 34, 90, 0.13);
+            border: 3px solid #ff4444;
+            transform: translateY(-6px) scale(1.05);
+        }
+        .feature-img-card .feature-icon {
+            margin-bottom: 0;
+            min-height: 60%;
+        }
+        .feature-img-card span {
+            margin-top: 0.7em;
+            color: #23232a !important;
+        }
+        @media (max-width: 900px) {
+            .features-flex {
+                flex-direction: column;
+                gap: 2.5rem;
+                align-items: center;
+            }
+            .features-info {
+                align-items: center;
+                text-align: center;
+                margin-top: 0.5rem;
+            }
+            .features-title, .features-desc {
+                text-align: center;
+            }
+            .features-image-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.9rem 0.9rem;
+            }
+            .feature-img-card {
+                width: 10em;
+                height: 7em;
+                min-width: 6em;
+                min-height: 4em;
+                max-width: 100%;
+                max-height: 8em;
+            }
+            .feature-img-card .feature-icon {
+                width: 3em;
+                height: 3em;
+                min-width: 2em;
+                min-height: 2em;
+                max-width: 3em;
+                max-height: 3em;
+            }
+        }
+        @media (max-width: 600px) {
+            .features-flex {
+                gap: 1.2rem;
+            }
+            .features-image-grid {
+                grid-template-columns: 1fr;
+                gap: 0.7rem;
+            }
+            .feature-img-card {
+                width: 100%;
+                min-width: 0;
+                max-width: 100%;
+                height: 5em;
+                min-height: 3em;
+                max-height: 5em;
+            }
+            .feature-img-card .feature-icon {
+                width: 2em;
+                height: 2em;
+                min-width: 1.2em;
+                min-height: 1.2em;
+                max-width: 2em;
+                max-height: 2em;
+            }
+        }
+
+        /* 추가: 붉은색 그라데이션 텍스트 효과 */
+        .gradient-red {
+          background: linear-gradient(90deg, #ff4444 0%, #ff7b7b 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          color: transparent;
+          font-weight: 700;
+        }
+        .features-title {
+          font-size: 2.7rem;
+          font-weight: 800;
+          line-height: 1.22;
+          margin-bottom: 1.2rem;
+          letter-spacing: -1px;
+        }
+        .feature-img-card {
+          width: 17.55em;
+          height: 13.5em;
+          min-width: 10.8em;
+          min-height: 8.1em;
+          max-width: 100%;
+          max-height: 16.2em;
+        }
+        .feature-img-card .feature-icon {
+          width: 6.075em;
+          height: 6.075em;
+          min-width: 3.375em;
+          min-height: 3.375em;
+          max-width: 6.075em;
+          max-height: 6.075em;
+        }
+        .feature-icon span {
+          font-size: 1em !important;
+        }
+        @media (max-width: 900px) {
+          .features-image-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.9rem 0.9rem;
+          }
+          .feature-img-card {
+            width: 13.5em;
+            height: 9.45em;
+            min-width: 8.1em;
+            min-height: 5.4em;
+            max-width: 100%;
+            max-height: 10.8em;
+          }
+          .feature-img-card .feature-icon {
+            width: 4.05em;
+            height: 4.05em;
+            min-width: 2.7em;
+            min-height: 2.7em;
+            max-width: 4.05em;
+            max-height: 4.05em;
+          }
+        }
+        @media (max-width: 600px) {
+          .feature-img-card {
+            width: 100%;
+            min-width: 0;
+            max-width: 100%;
+            height: 6.75em;
+            min-height: 4.05em;
+            max-height: 6.75em;
+          }
+          .feature-img-card .feature-icon {
+            width: 2.7em;
+            height: 2.7em;
+            min-width: 1.62em;
+            min-height: 1.62em;
+            max-width: 2.7em;
+            max-height: 2.7em;
+          }
+        }
+        .features-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.22;
+            margin-bottom: 1.2rem;
+            letter-spacing: -1px;
+        }
+        .features-desc {
+            font-size: 1.25rem;
+            font-weight: 500;
+            line-height: 1.7;
+            color: #fff;
+            opacity: 0.93;
+            margin-bottom: 1.2rem;
+            word-break: keep-all;
+        }
+        .features-desc .desc-line {
+            display: block;
+            margin-bottom: 0.1em;
+            text-align: left;
+        }
+        .features-desc .no-break {
+          white-space: nowrap;
+        }
+        .features-title {
+          text-align: left !important;
+          font-size: 3.8rem !important;
+          padding-left: 10px;
+        }
+        .features-title .no-break {
+          white-space: nowrap;
+        }
+        .features-info {
+          padding-left: 10px;
+        }
+        .features-image-grid .feature-img-card:nth-of-type(1),
+        .features-image-grid .feature-img-card:nth-of-type(2),
+        .features-image-grid .feature-img-card:nth-of-type(3),
+        .features-image-grid .feature-img-card:nth-of-type(4),
+        .features-image-grid .feature-img-card {
+            background: linear-gradient(135deg, #ffb3b3 0%, #e0e0e0 100%) !important;
+        }
+        @media (max-width: 480px) {
+          .feature-icon {
+            font-size: unset !important;
+          }
+        }
+        .feature-icon span {
+          font-size: clamp(3em, 10vw, 6em) !important;
+        }
+        .feature-img-card {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .feature-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex: 1 0 auto;
+          margin-bottom: auto;
+          width: 100%;
+          height: 100%;
+        }
+        .feature-img-card span {
+          margin-top: 0.7em;
+          color: #23232a !important;
+        }
+        .features-info {
+          text-align: center !important;
+        }
+        .features-main-btn {
+          display: block;
+          margin: 0 auto;
+          text-align: center;
+        }
+        .feature-img-card span {
+          font-weight: 600 !important;
+        }
+        .features-image-grid .feature-img-card:nth-of-type(1) .feature-icon {
+          padding-left: 0;
+          padding-right: 55%;
+        }
+        .features-image-grid .feature-img-card:nth-of-type(2) .feature-icon,
+        .features-image-grid .feature-img-card:nth-of-type(3) .feature-icon,
+        .features-image-grid .feature-img-card:nth-of-type(4) .feature-icon {
+          padding-left: 0;
+          padding-right: 55%;
+        }
+        .feature-img-card .feature-icon {
+          min-height: 60%;
+        }
+        .feature-img-card span {
+          margin-top: 0.7em;
+        }
+        .features-image-grid .feature-icon {
+            position: relative;
+            top: -40px;
+        }
+        .features-image-grid .feature-img-card {
+            background: linear-gradient(135deg, #b24545 0%, #444444 100%) !important;
+            border-radius: 20px;
+            box-shadow: 0 4px 16px rgba(178, 69, 69, 0.15);
+        }
+
+        /* 스타일 태그 내에 아래 CSS 추가 */
+        .main-feature-section {
+          background: #fff;
+          padding: 5rem 0 6rem 0;
+        }
+        .main-feature-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+          gap: 2.5rem;
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+        .main-feature-card {
+          background: linear-gradient(135deg, #fff6f6 0%, #ffeaea 100%);
+          border-radius: 22px;
+          box-shadow: 0 8px 32px rgba(255, 68, 68, 0.08), 0 2px 8px rgba(255, 68, 68, 0.06);
+          padding: 2.5rem 2rem 2rem 2rem;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          transition: box-shadow 0.18s, transform 0.15s;
+          border: 2px solid #ffb3b3;
+        }
+        .main-feature-card h3 {
+          font-size: 1.45rem;
+          font-weight: 800;
+          color: #ff4444;
+          margin-bottom: 1.1rem;
+          letter-spacing: -0.5px;
+        }
+        .main-feature-card p {
+          color: #23232a;
+          font-size: 1.08rem;
+          line-height: 1.7;
+          margin-bottom: 2.2rem;
+          min-height: 60px;
+        }
+        .main-feature-link {
+          color: #fff;
+          background: linear-gradient(90deg, #ff4444 60%, #ff8888 100%);
+          border-radius: 18px;
+          padding: 0.7rem 1.5rem;
+          font-weight: 700;
+          font-size: 1rem;
+          text-decoration: none;
+          box-shadow: 0 2px 10px rgba(255, 68, 68, 0.10);
+          transition: background 0.2s, box-shadow 0.2s, transform 0.18s;
+        }
+        .main-feature-link:hover {
+          background: linear-gradient(90deg, #ff6666 60%, #ffb3b3 100%);
+          box-shadow: 0 6px 18px rgba(255, 68, 68, 0.18);
+          transform: translateY(-2px) scale(1.04);
+        }
+
+        /* 분석 결과 모달 */
+        .result-modal {
+          position: fixed;
+          top: 0; left: 0; right: 0; bottom: 0;
+          z-index: 99999;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .result-modal-backdrop {
+          position: absolute;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: rgba(30,30,30,0.55);
+          z-index: 1;
+        }
+        .result-modal-content {
+          position: relative;
+          z-index: 2;
+          background: #fff;
+          border-radius: 18px;
+          box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+          padding: 2.5rem 2.2rem 2rem 2.2rem;
+          min-width: 340px;
+          max-width: 95vw;
+          max-height: 90vh;
+          overflow-y: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .result-modal-close {
+          position: absolute;
+          top: 1.1rem;
+          right: 1.1rem;
+          background: none;
+          border: none;
+          font-size: 1.7rem;
+          color: #ff4444;
+          cursor: pointer;
+          z-index: 3;
+        }
+        #resultModalBody {
+          width: 100%;
+          margin-top: 0.5rem;
+        }
+
+        /* 카테고리 입력 섹션 스타일 */
+        .category-input-section {
+            margin-top: 2rem; /* 위 여백 */
+            margin-bottom: 2rem; /* 아래 여백 */
+            transition: all 0.3s ease; /* 부드러운 변화 */
+        }
+
+        .category-input-section.hidden {
+            display: none; /* 숨김 */
+        }
+
+        .category-input-section.show {
+            display: block; /* 표시 */
+        }
+
+        @media (max-width: 1023px) {
+            .input-container {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+        @media (max-width: 768px) {
+            .input-container {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+        @media (max-width: 480px) {
+            .input-container {
+                max-width: 100%;
+                width: 100%;
+            }
+        }
+        @media (min-width: 2000px) {
+            .demo-container {
+                width: 1000px;
+                max-width: 1000px;
+            }
+        }
+        @media (max-width: 800px) {
+            .search-box {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+
+        /* trend-controls.compact: 트렌드 버튼들을 가로로 길게 한 줄에 나란히 배치하는 영역입니다.\n   - 버튼들이 한 줄에 쭉 나열되고, 넘치면 가로로 스크롤이 생깁니다.\n   - 버튼 사이 간격, 최대/최소 크기, 스크롤바 숨기기 등 다양한 스타일이 적용되어 있습니다. */\n.trend-controls.compact {\n  margin-left: 10px !important;\n  display: flex; /* 버튼들을 가로로 한 줄에 나란히 배치해요 */\n  flex-direction: row; /* 가로 방향(왼쪽→오른쪽)으로 정렬해요 */\n  justify-content: left; /* 버튼들을 왼쪽에 붙여요 */\n  align-items: stretch; /* 버튼들의 세로 길이를 똑같이 맞춰요 */\n  gap: 32px; /* 버튼 사이의 간격을 32px만큼 띄워요 */\n  margin-left: 0; /* 왼쪽 여백을 없애요 */\n  margin-right: 0; /* 오른쪽 여백을 없애요 */\n  width: 100%; /* 웹사이트(부모) 크기에 맞춰서 길이가 늘어나거나 줄어요 */\n  max-width: 400px; /* 최대 길이는 400px까지만 늘어나요 */\n  overflow-x: auto; /* 가로로 내용이 넘치면 스크롤이 생겨요 */\n  flex-wrap: nowrap; /* 버튼들이 줄바꿈 없이 한 줄에만 있어요 */\n  scrollbar-width: none; /* (파이어폭스) 스크롤바를 화면에 안 보여줘요 */\n  -ms-overflow-style: none; /* (IE, 엣지) 스크롤바를 화면에 안 보여줘요 */\n  min-height: 120px; /* 영역의 최소 높이를 120px로 해요 */\n  min-width: 200px;\n}\n\n/* .trend-controls.compact::-webkit-scrollbar: 크롬, 사파리, 오페라 브라우저에서 스크롤바를 화면에 보이지 않게 숨깁니다. */\n.trend-controls.compact::-webkit-scrollbar {\n  display: none; /* Chrome, Safari, Opera */\n}\n\n/* .trend-button: 트렌드 버튼 하나하나의 디자인을 정하는 부분입니다.\n   - 배경색, 글씨색, 테두리, 그림자, 크기, 글씨 크기, 마우스 올렸을 때 효과 등이 포함되어 있습니다. */\n.trend-button {\n  background: #fff; /* 배경색 */\n  color: #ff4444; /* 글씨색 */\n  border: 2px solid #ffb3b3; /* 테두리 */\n  box-shadow: 0 2px 10px rgba(255, 68, 68, 0.10); /* 그림자 */\n  border-radius: 18px; /* 둥근 모서리 */\n  padding: 0.7rem 1.5rem; /* 안쪽 여백 */\n  font-weight: 700; /* 글씨 굵기 */\n  font-size: 1rem; /* 글씨 크기 */\n  text-decoration: none; /* 밑줄 없애기 */\n  transition: background 0.2s, box-shadow 0.2s, transform 0.18s; /* 부드러운 변화 */\n  cursor: pointer; /* 마우스 커서 모양 */\n  white-space: nowrap; /* 줄바꿈 없애기 */\n  overflow: hidden; /* 넘치는 부분 숨기기 */\n  text-overflow: ellipsis; /* 넘치는 부분에 ... 표시 */\n  max-width: 100%; /* 최대 너비 */\n  height: 40px; /* 높이 */\n  display: flex; /* 가로 정렬 */\n  align-items: center; /* 세로 중앙 정렬 */\n  justify-content: center; /* 가로 중앙 정렬 */\n}\n\n/* .trend-button:hover: 트렌드 버튼에 마우스를 올렸을 때(hover) 색이 바뀌고, 살짝 위로 올라가며, 그림자가 더 진해집니다. */\n.trend-button:hover {\n  background: linear-gradient(90deg, #ff6666 60%, #ffb3b3 100%); /* 배경색 그라데이션 */\n  box-shadow: 0 6px 18px rgba(255, 68, 68, 0.18); /* 그림자 진하게 */\n  transform: translateY(-2px) scale(1.04); /* 위로 살짝 올리고 크게 보이게 */\n}
+
+        .trend-controls.compact.second-scroll {
+            display: flex; /* 버튼들을 가로로 한 줄에 나란히 배치해요 */
+            flex-direction: row; /* 가로 방향(왼쪽→오른쪽)으로 정렬해요 */
+            justify-content: left; /* 버튼들을 왼쪽에 붙여요 */
+            align-items: stretch; /* 버튼들의 세로 길이를 똑같이 맞춰요 */
+            gap: 32px; /* 버튼 사이의 간격을 32px만큼 띄워요 */
+            margin-left: 0; /* 왼쪽 여백을 없애요 */
+            margin-right: 0; /* 오른쪽 여백을 없애요 */
+            width: 100%; /* 웹사이트(부모) 크기에 맞춰서 길이가 늘어나거나 줄어요 */
+            max-width: 500px; /* 최대 길이는 400px까지만 늘어나요 */
+            overflow-x: auto; /* 가로로 내용이 넘치면 스크롤이 생겨요 */
+            flex-wrap: nowrap; /* 버튼들이 줄바꿈 없이 한 줄에만 있어요 */
+            scrollbar-width: none; /* (파이어폭스) 스크롤바를 화면에 안 보여줘요 */
+            -ms-overflow-style: none; /* (IE, 엣지) 스크롤바를 화면에 안 보여줘요 */
+            min-height: 120px; /* 영역의 최소 높이를 120px로 해요 */
+            min-width: 400px;
+        }
+        .trend-controls.compact.second-scroll::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        .service-content {
+            display: flex; /* 큰 화면에서는 가로로 배치해요 */
+            flex-direction: row; /* 큰 화면에서는 row(가로) */
+            gap: 0.5rem;
+            width: 100%;
+        }
+        .scrolls-wrapper {
+            display: flex; /* 항상 세로로 쌓아요 */
+            flex-direction: column;
+            gap: 20px; /* 두 스크롤 영역 사이 간격 */
+            flex: 0 0 auto;
+        }
+        @media (max-width: 900px) {
+            .service-content {
+                flex-direction: column; /* 작은 화면에서는 세로로 쌓아요 */
+            }
+        }
+
+        .trend-controls.compact,
+        .trend-controls.compact.second-scroll,
+        .scrolls-wrapper {
+            max-height: 280px; /* 스크롤 영역의 최대 높이를 넉넉하게 280px로 설정해요 */
+        }
+        .trend-button {
+            max-height: 180px !important; /* 버튼의 최대 높이 */
+        }
+        .trend-controls.compact,
+        .trend-controls.compact.second-scroll {
+            max-height: 180px; /* 각 스크롤 영역의 최대 높이 */
+            overflow-x: auto;
+            overflow-y: visible; /* 세로로는 잘리지 않게 해요 */
+        }
+        /* .scrolls-wrapper의 max-height는 삭제합니다 */
+        .scrolls-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            flex: 0 0 auto;
+        }
+
+        .plan-doc-card {
+          background: #fff;
+          border-radius: 24px;
+          box-shadow: 0 8px 32px rgba(30,34,90,0.10), 0 1.5px 6px rgba(60,60,60,0.07);
+          padding: 2.8rem 2.2rem 2.2rem 2.2rem;
+          margin: 2.5rem auto 3.5rem auto;
+          max-width: 700px;
+          display: flex;
+          flex-direction: column;
+          gap: 1.7rem;
+          border: 2.5px solid #e0e4ea;
+          position: relative;
+        }
+        .plan-doc-header {
+          display: flex;
+          align-items: center;
+          gap: 1.2rem;
+          margin-bottom: 0.5rem;
+        }
+        .plan-doc-title {
+          font-size: 2.1rem;
+          font-weight: 800;
+          color: #23232a;
+          margin: 0;
+          letter-spacing: -1px;
+        }
+        .plan-doc-badge {
+          background: linear-gradient(90deg, #ff4444 0%, #ffb3b3 100%);
+          color: #fff;
+          font-size: 1rem;
+          font-weight: 700;
+          border-radius: 16px;
+          padding: 0.4rem 1.1rem;
+          margin-left: 0.5rem;
+          letter-spacing: 0.02em;
+          box-shadow: 0 2px 8px rgba(255,68,68,0.08);
+        }
+        .plan-doc-section {
+          margin-bottom: 0.7rem;
+        }
+        .plan-doc-label {
+          font-size: 1.05rem;
+          font-weight: 700;
+          color: #ff4444;
+          margin-bottom: 0.3rem;
+          letter-spacing: 0.01em;
+        }
+        .plan-doc-ment {
+          font-size: 1.15rem;
+          color: #23232a;
+          font-weight: 600;
+          background: #fff6f6;
+          border-radius: 12px;
+          padding: 1.1rem 1.3rem;
+          margin-bottom: 0.2rem;
+          box-shadow: 0 2px 8px rgba(255,68,68,0.04);
+        }
+        .plan-doc-desc {
+          font-size: 1.05rem;
+          color: #444;
+          background: #f8f9fa;
+          border-radius: 10px;
+          padding: 0.9rem 1.1rem;
+          margin-bottom: 0.2rem;
+        }
+        .plan-doc-story {
+          font-size: 1.05rem;
+          color: #23232a;
+          background: #f3f6ff;
+          border-radius: 10px;
+          padding: 0.9rem 1.1rem;
+          margin-bottom: 0.2rem;
+        }
+        .plan-doc-input-row {
+          display: flex;
+          gap: 0.7rem;
+          align-items: center;
+          margin-top: 0.5rem;
+        }
+        .plan-doc-input {
+          flex: 1;
+          padding: 1.1rem 1.5rem;
+          border-radius: 14px;
+          border: 2px solid #ffb3b3;
+          font-size: 1.1rem;
+          background: #fff6f6;
+          color: #23232a;
+          outline: none;
+          transition: border 0.2s;
+        }
+        .plan-doc-input:focus {
+          border-color: #ff4444;
+        }
+        .plan-doc-btn {
+          background: linear-gradient(90deg, #ff4444 0%, #ffb3b3 100%);
+          color: #fff;
+          border: none;
+          border-radius: 14px;
+          padding: 1.1rem 2.1rem;
+          font-size: 1.1rem;
+          font-weight: 700;
+          cursor: pointer;
+          box-shadow: 0 2px 10px rgba(255,68,68,0.10);
+          transition: background 0.2s, box-shadow 0.2s, transform 0.18s;
+        }
+        .plan-doc-btn:hover {
+          background: linear-gradient(90deg, #ff6666 0%, #ffb3b3 100%);
+          box-shadow: 0 6px 18px rgba(255,68,68,0.18);
+          transform: translateY(-2px) scale(1.04);
+        }
+        @media (max-width: 900px) {
+          .plan-doc-card { padding: 1.5rem 0.7rem; }
+          .plan-doc-title { font-size: 1.3rem; }
+          .plan-doc-badge { font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
-    <!-- 
-    헤더 영역 
-    - 페이지 상단의 네비게이션 바
-    -->
+    <!-- 헤더(상단 네비게이션) 영역: 사이트의 로고와 메뉴가 들어있어요 -->
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <!-- 로고 (클릭하면 맨 위로) -->
-                <a href="#" class="logo">TrendScope</a>
-                <!-- 네비게이션 메뉴 -->
-                <ul class="nav-links">
+                <!-- SVG+텍스트 로고 (별을 조금 아래로 이동) -->
+                <a href="#" class="logo" aria-label="Trendpick 홈">
+                    <span class="logo-svg-wrap">
+                        <svg class="logo-svg" width="210" height="48" viewBox="0 0 210 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- 짧은 아치(포물선), 끝에 별이 위치, 별은 오른쪽+아래로 이동 -->
+                            <path d="M34 30 Q101 5 168 30" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                            <!-- 별: x좌표 +10, y좌표 +3 이동 (178,23 180,28 185,28 181,31 183,36 178,33 173,36 175,31 171,28 176,28) -->
+                            <polygon points="178,23 180,28 185,28 181,31 183,36 178,33 173,36 175,31 171,28 176,28" fill="#ff4444"/>
+                        </svg>
+                    </span>
+                    <span class="logo-text">
+                        <span class="logo-trend">TREND</span><span class="logo-pick">PICK</span>
+                    </span>
+                </a>
+                <button class="hamburger" onclick="toggleMenu()" aria-label="메뉴 열기/닫기">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links" id="navLinks">
                     <li><a href="#features">기능</a></li>
                     <li><a href="#demo">데모</a></li>
-                    <li><a href="#pricing">가격</a></li>
-                    <li><a href="#contact">문의</a></li>
+                    <li><a href="#realtime-trends">실시간 트렌드</a></li>
+                    <li><a href="#content-recommendations">콘텐츠 추천</a></li>
+                    <li><a href="#contact">문의하기</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- 
-    히어로 섹션 
-    - 페이지의 메인 제목과 설명, 주요 버튼이 있는 영역
-    -->
+    <!-- 히어로(메인 소개) 영역: 사이트의 대표 슬로건과 버튼이 있어요 -->
     <section class="hero">
         <div class="container">
             <h1>크리에이터를 위한<br>트렌드 분석 플랫폼</h1>
-            <p>YouTube, Instagram의 최신 트렌드를 AI로 분석하여<br>콘텐츠 전략을 최적화하세요</p>
-            <!-- 데모 섹션으로 이동하는 버튼 -->
+            <p>YouTube, Instagram의 최신 트렌드를 AI로 분석하여<br>콘텐츠 전략을 최적화하세요</p>    
             <a href="#demo" class="cta-button">무료로 시작하기</a>
         </div>
     </section>
 
-    <!-- 
-    기능 소개 섹션 
-    - 서비스의 주요 기능 4가지를 소개
-    -->
+    <!-- 주요 기능 소개 영역: Canva 스타일 레이아웃 -->
+    <hr class="section-divider">
     <section class="features" id="features">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 1rem;">주요 기능</h2>
-            <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 3rem;">
-                AI 기반 트렌드 분석으로 크리에이터의 성공을 돕습니다
-            </p>
-            
-            <!-- 기능 카드들을 그리드로 배치 -->
-            <div class="features-grid">
-                <!-- 기능 1: 실시간 트렌드 분석 -->
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>실시간 트렌드 분석</h3>
-                    <p>YouTube, Instagram의 최신 트렌드를 실시간으로 분석하여 인기 키워드와 주제를 제공합니다.</p>
+        <div class="container features-flex">
+            <!-- 왼쪽: 텍스트/버튼/아이콘 -->
+            <div class="features-info">
+                <h2 class="features-title">
+                  <span class="gradient-red">트렌드</span> 분석과 <span class="no-break"><span class="gradient-red">AI</span> 추천을 동시에</span>
+                </h2>
+                <p class="features-desc">
+                  <span class="desc-line no-break">실시간 트렌드, 콘텐츠 추천, 경쟁자 분석, 성과 예측까지</span>
+                  <span class="desc-line">Trendpick에서 한 번에 경험하세요.</span>
+                </p>
+                <button class="features-main-btn">무료로 시작하기</button>
+            </div>
+            <!-- 오른쪽: 이미지 그리드 -->
+            <div class="features-image-grid">
+                <!-- 실시간 트렌드 -->
+                <div class="feature-img-card">
+                  <div class="feature-icon">
+                    <span style="display:block; text-align:center; width:100%; height:100%; line-height:1;">📊</span>
+                  </div>
+                  <span>실시간 트렌드</span>
                 </div>
-                
-                <!-- 기능 2: 맞춤형 콘텐츠 추천 -->
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>맞춤형 콘텐츠 추천</h3>
-                    <p>AI가 여러분의 채널 특성을 분석하여 최적의 콘텐츠 아이디어를 제안합니다.</p>
-                </div>
-                
-                <!-- 기능 3: 경쟁자 분석 -->
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>경쟁자 분석</h3>
-                    <p>동일 분야 크리에이터들의 전략을 분석하여 차별화된 접근 방법을 찾아드립니다.</p>
-                </div>
-                
-                <!-- 기능 4: 성과 예측 -->
-                <div class="feature-card">
-                    <div class="feature-icon">🚀</div>
-                    <h3>성과 예측</h3>
-                    <p>AI 모델을 통해 콘텐츠의 예상 성과를 미리 예측하여 최적의 업로드 타이밍을 제안합니다.</p>
+                <!-- 콘텐츠 추천 -->
+                <div class="feature-img-card">
+                  <div class="feature-icon">
+                    <span style="display:block; text-align:center; width:100%; height:100%; line-height:1;">🌟</span>
+                  </div>
+                  <span>콘텐츠 추천</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 
-    데모 섹션 
-    - 실제로 키워드를 입력해서 트렌드 분석을 체험해볼 수 있는 영역
-    -->
+    <!-- 데모(트렌드 분석 체험) 영역: 사용자가 직접 키워드를 입력해 분석을 체험할 수 있어요 -->
+    <hr class="section-divider">
     <section class="demo-section" id="demo">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 3rem;">
-                트렌드 분석 체험하기
-            </h2>
-            
-            <div class="demo-container">
-                <!-- 검색 입력 영역 -->
-                <div class="search-box">
-                    <!-- 키워드 입력창 -->
-                    <input type="text" class="search-input" placeholder="분석하고 싶은 키워드를 입력하세요 (예: 쿠킹, 게임, 뷰티)" id="searchInput">
-                    <!-- 분석 실행 버튼 -->
-                    <button class="search-button" onclick="analyzeTrend()">분석하기</button>
+        <h2 class="demo-title" style="text-align: center;"><span class="gradient-red">트렌드</span> 분석 체험하기</h2>
+        <p class="demo-desc" style="text-align: center;">YouTube, Instagram의 최신 트렌드를 AI로 분석하여<br>콘텐츠 전략을 최적화하세요</p>
+        <!-- [아래는 키워드 입력창과 검색 버튼입니다. 원하는 키워드를 입력하고 돋보기 버튼을 누르면 분석이 시작됩니다.] -->
+        <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
+            <input type="text" class="search-input" placeholder="분석하고 싶은 키워드를 입력하세요 (예: 쿠킹, 게임, 뷰티)" id="searchInput2" style="max-width: 400px;">
+            <button class="search-button" onclick="analyzeTrend2()" id="searchButton2" style="margin-left: 1rem;">🔍︎</button>
+        </div>
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>실시간 데이터를 분석하고 있습니다...</p>
+        </div>
+        <div class="error-message hidden" id="errorMessage"></div>
+        <div class="results hidden" id="results">
+            <!-- 기존 결과 카드 삭제 -->
+        </div>
+    </section>
+
+    <!-- 실시간 트렌드 분석 영역: 인기 동영상, 카테고리별 트렌드, 상승 트렌드 버튼과 결과가 있어요 -->
+    <hr class="section-divider">
+    <section class="features" id="realtime-trends">
+        <div class="container service-flex" style="align-items: flex-start;">
+            <!-- 좌측: 실시간 트렌드 SVG 일러스트 (삭제됨) -->
+            <!-- 우측: 설명 + 검색/버튼 -->
+            <div class="service-content">
+                <div class="desc-area" style="flex: 1 1 0; min-width: 0;">
+                    <h2 class="service-title" style="
+  color: #23232a !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  -webkit-text-fill-color: initial !important;
+  background-clip: initial !important;
+  text-fill-color: initial !important;">실시간 트렌드 분석</h2>
+                    <p class="service-desc">SNS의 인기 동영상, 카테고리별 트렌드, 상승 트렌드를 한눈에 확인하세요.<br>실시간 데이터로 빠르게 트렌드를 파악할 수 있습니다.</p>
                 </div>
-                
-                <!-- 
-                검색 결과 영역 
-                - 처음에는 숨겨져 있다가 검색하면 나타남
-                -->
-                <div class="results hidden" id="results">
-                    <!-- 인스타그램 트렌드 결과 -->
-                    <div class="result-card">
-                        <h4>📱 인스타그램 트렌드</h4>
-                        <p>검색량: <span id="instaViews">-</span></p>
-                        <p>인기도: <span id="instaPopularity">-</span></p>
-                        <p>추천도: <span id="instaRecommend">-</span></p>
+                <!-- 스크롤 2개를 항상 세로로 쌓는 래퍼 -->
+                <div class="scrolls-wrapper">
+                    <div class="trend-controls compact">
+                        <!-- 첫 번째 스크롤 버튼들 -->
+                        <button class="trend-button" data-category="인기 동영상" onclick="loadTrendingVideos()">🔥 인기 동영상</button>
+                        <button class="trend-button" data-category="카테고리별 트렌드" onclick="showCategoryInput()">📊 카테고리별 트렌드</button>
+                        <button class="trend-button" data-category="상승 트렌드" onclick="loadRisingTrends()">🚀 상승 트렌드</button>
+                        <button class="trend-button" data-category="게임">🎮 게임</button>
+                        <button class="trend-button" data-category="패션">👗 패션</button>
+                        <button class="trend-button" data-category="뷰티">💄 뷰티</button>
+                        <button class="trend-button" data-category="스포츠">🏅 스포츠</button>
+                        <button class="trend-button" data-category="음악">🎵 음악</button>
+                        <button class="trend-button" data-category="영화">🎬 영화</button>
+                        <button class="trend-button" data-category="드라마">📺 드라마</button>
+                        <button class="trend-button" data-category="음식">🍽️ 음식</button>
+                        <button class="trend-button" data-category="헬스">💪 헬스</button>
+                        <button class="trend-button" data-category="테크">💻 테크</button>
+                        <button class="trend-button" data-category="SNS">📱 SNS</button>
+                        <button class="trend-button" data-category="연애">💌 연애</button>
+                        <button class="trend-button" data-category="취미">🎨 취미</button>
+                        <button class="trend-button" data-category="여가">🏖️ 여가</button>
+                        <button class="trend-button" data-category="독서">📚 독서</button>
+                        <button class="trend-button" data-category="여행">✈️ 여행</button>
+                        <button class="trend-button" data-category="자기계발">🚀 자기계발</button>
+                        <button class="trend-button" data-category="중고">🔄 중고</button>
+                        <button class="trend-button" data-category="웹툰">🖼️ 웹툰</button>
+                        <button class="trend-button" data-category="팬덤">👑 팬덤</button>
+                        <button class="trend-button" data-category="AI">🤖 AI</button>
+                        <button class="trend-button" data-category="교육">🎓 교육</button>
+                        <button class="trend-button" data-category="리빙">🏠 리빙</button>
                     </div>
-                    
-                    <!-- 유튜브 트렌드 결과 -->
-                    <div class="result-card">
-                        <h4>🎥 유튜브 트렌드</h4>
-                        <p>검색량: <span id="youtubeViews">-</span></p>
-                        <p>인기도: <span id="youtubePopularity">-</span></p>
-                        <p>추천도: <span id="youtubeRecommend">-</span></p>
-                    </div>
-                    
-                    <!-- AI 추천 결과 -->
-                    <div class="result-card">
-                        <h4>🤖 AI 추천</h4>
-                        <p id="aiRecommendation">키워드를 입력하면 AI가 맞춤형 추천을 제공합니다.</p>
-                    </div>
-                    
-                    <!-- 최적 업로드 시간 추천 -->
-                    <div class="result-card">
-                        <h4>📅 최적 업로드 시간</h4>
-                        <p id="bestTime">분석 중...</p>
+                    <div class="trend-controls compact second-scroll">
+                        <!-- 두 번째 스크롤 버튼들 -->
+                        <button class="trend-button" data-category="쇼핑">🛒 쇼핑</button>
+                        <button class="trend-button" data-category="브랜드">🏷️ 브랜드</button>
+                        <button class="trend-button" data-category="마케팅">📢 마케팅</button>
+                        <button class="trend-button" data-category="스타트업">🚀 스타트업</button>
+                        <button class="trend-button" data-category="음료">🥤 음료</button>
+                        <button class="trend-button" data-category="소비">💳 소비</button>
+                        <button class="trend-button" data-category="공부">📚 공부</button>
+                        <button class="trend-button" data-category="자격증">📜 자격증</button>
+                        <button class="trend-button" data-category="진로">🧭 진로</button>
+                        <button class="trend-button" data-category="직업">💼 직업</button>
+                        <button class="trend-button" data-category="재테크">💰 재테크</button>
+                        <button class="trend-button" data-category="취업">🧑‍💼 취업</button>
+                        <button class="trend-button" data-category="환경">🌱 환경</button>
+                        <button class="trend-button" data-category="반려동물">🐶 반려동물</button>
+                        <button class="trend-button" data-category="동물">🦁 동물</button>
+                        <button class="trend-button" data-category="인테리어">🏡 인테리어</button>
+                        <button class="trend-button" data-category="친환경">🌳 친환경</button>
+                        <button class="trend-button" data-category="IT">💻 IT</button>
+                        <button class="trend-button" data-category="건강">💪 건강</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 
-    푸터 영역 
-    - 페이지 하단의 저작권 정보
-    -->
+    <!-- 맞춤형 콘텐츠 추천 영역: AI가 추천해주는 콘텐츠를 볼 수 있어요 -->
+    <hr class="section-divider">
+    <section class="demo-section" id="content-recommendations">
+        <div class="container" style="max-width: 800px; margin: 0 auto;">
+          <h2 class="service-title" style="font-size:2.1rem; font-weight:800; margin-bottom:1.2rem; letter-spacing:-1px;">맞춤형 콘텐츠 추천</h2>
+          <div class="plan-doc-card">
+            <div class="plan-doc-header">
+              <!-- <h2 class="plan-doc-title">맞춤형 콘텐츠 추천 기획서</h2> -->
+              <span class="plan-doc-badge">AI 콘텐츠 전략</span>
+            </div>
+            <div class="plan-doc-section">
+              <div class="plan-doc-label">멘트</div>
+              <div class="plan-doc-ment">AI가 여러분의 채널 특성과 관심사를 분석하여 <b>최적의 콘텐츠 아이디어</b>를 추천해드립니다.</div>
+            </div>
+            <div class="plan-doc-section">
+              <div class="plan-doc-label">상황</div>
+              <div class="plan-doc-desc">채널의 성장 정체, 새로운 콘텐츠 아이디어 부족, 타깃 시청자와의 소통 강화가 필요한 상황에서 활용할 수 있습니다.</div>
+            </div>
+            <div class="plan-doc-section">
+              <div class="plan-doc-label">이야기</div>
+              <div class="plan-doc-story">AI 분석을 통해 채널의 강점과 시청자 트렌드를 파악하고, <b>실행 가능한 콘텐츠 기획안</b>을 제공합니다.<br>추천 결과는 실제 인기 사례와 데이터 기반 인사이트를 바탕으로 제안됩니다.</div>
+            </div>
+            <div class="plan-doc-section">
+              <div class="plan-doc-label">추천 입력</div>
+              <div class="plan-doc-input-row">
+                <input type="text" class="plan-doc-input" placeholder="채널 주제나 관심 분야를 입력하세요" id="channelInput">
+                <button class="plan-doc-btn" onclick="generateRecommendations()">추천 받기</button>
+              </div>
+            </div>
+            <div class="recommendation-loading hidden" id="recommendationLoading">
+              <div class="spinner"></div>
+              <p>AI가 맞춤형 추천을 생성하는 중...</p>
+            </div>
+            <div class="recommendation-results hidden" id="recommendationResults">
+              <div class="recommendation-grid" id="recommendationGrid"></div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- 팝업(요약, 상세, 추천 결과) 영역: 상세 정보나 요약 정보를 보여주는 팝업 -->
+    <div class="summary-popup" id="summaryPopup">
+        <div class="summary-content">
+            <div class="summary-header">
+                <button class="summary-close" onclick="closeSummaryPopup()">&times;</button>
+                <h2>�� 맞춤형 콘텐츠 추천 요약</h2>
+                <p id="summaryTopic" style="margin-top: 0.5rem; opacity: 0.9;"></p>
+            </div>
+            <div class="summary-body">
+                <div class="summary-grid" id="summaryGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="detail-popup" id="detailPopup">
+        <div class="detail-content">
+            <div class="detail-header">
+                <button class="detail-close" onclick="closeDetailPopup()">&times;</button>
+                <h2 id="detailTitle">📋 콘텐츠 상세 정보</h2>
+            </div>
+            <div class="detail-body" id="detailBody"></div>
+        </div>
+    </div>
+
+    <div class="recommendation-popup" id="recommendationPopup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <button class="popup-close" onclick="closeRecommendationPopup()">&times;</button>
+                <h2>🎯 맞춤형 콘텐츠 추천 결과</h2>
+                <p id="popupTopic" style="margin-top: 0.5rem; opacity: 0.9;"></p>
+            </div>
+            <div class="popup-body">
+                <div class="popup-recommendation-grid" id="popupRecommendationGrid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터(하단 정보) 영역: 저작권 및 사이트 설명 -->
+    <hr class="section-divider">
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 TrendScope. 모든 권리 보유.</p>
-            <p>크리에이터의 성공을 위한 AI 트렌드 분석 플랫폼</p>
+            <!-- 기존 문구 삭제 -->
         </div>
     </footer>
 
-    <!-- 
-    JavaScript 시작 
-    - 웹사이트의 동적 기능을 구현하는 코드
-    -->
+    <!-- 자바스크립트 파일 불러오기: 사이트의 동작을 담당하는 JS 파일들입니다 -->
+    <script src="js/api-config.js"></script> <!-- API 설정 관련 -->
+    <script src="js/youtube-api.js"></script> <!-- 유튜브 데이터 처리 -->
+    <script src="js/instagram-api.js"></script> <!-- 인스타그램 데이터 처리 -->
+    <script src="js/trend-analyzer.js"></script> <!-- 트렌드 분석 기능 -->
+    <script src="js/main.js"></script> <!-- 메인 동작(이벤트 등) -->
+    <script src="js/advanced-features.js"></script> <!-- 고급 기능 -->
+    
+    <!-- 반응형 네비게이션을 위한 JavaScript -->
     <script>
-        /* 
-        트렌드 분석 함수 
-        - 사용자가 키워드를 입력하고 "분석하기" 버튼을 클릭했을 때 실행
-        */
-        function analyzeTrend() {
-            // 입력창에서 키워드 가져오기 (앞뒤 공백 제거)
-            const keyword = document.getElementById('searchInput').value.trim();
+        // 햄버거 메뉴 토글 함수
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const hamburger = document.querySelector('.hamburger');
             
-            // 키워드가 비어있으면 알림 표시하고 종료
-            if (!keyword) {
-                alert('키워드를 입력해주세요!');
-                return;
-            }
-
-            // 결과 섹션을 화면에 표시 (hidden 클래스 제거)
-            document.getElementById('results').classList.remove('hidden');
-            
-            // 실제 API 호출 대신 가짜 데이터로 시뮬레이션
-            // 1초 후에 결과 표시 (실제 API 호출 시간을 시뮬레이션)
-            setTimeout(() => {
-                // 가짜 데이터 생성
-                const mockData = generateMockData(keyword);
-                
-                // 생성된 데이터를 화면에 표시
-                document.getElementById('instaViews').textContent = mockData.instagram.views;
-                document.getElementById('instaPopularity').textContent = mockData.instagram.popularity;
-                document.getElementById('instaRecommend').textContent = mockData.instagram.recommend;
-                
-                document.getElementById('youtubeViews').textContent = mockData.youtube.views;
-                document.getElementById('youtubePopularity').textContent = mockData.youtube.popularity;
-                document.getElementById('youtubeRecommend').textContent = mockData.youtube.recommend;
-                
-                document.getElementById('aiRecommendation').textContent = mockData.aiRecommendation;
-                document.getElementById('bestTime').textContent = mockData.bestTime;
-            }, 1000);
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
         }
-
-        /* 
-        가짜 데이터 생성 함수 
-        - 실제 API가 없으므로 임시로 랜덤한 데이터를 생성
-        */
-        function generateMockData(keyword) {
-            // 랜덤한 조회수 생성 (100,000 ~ 1,100,000)
-            const views = Math.floor(Math.random() * 1000000) + 100000;
-            
-            // 랜덤한 인기도 선택
-            const popularity = ['🔥 매우 높음', '⭐ 높음', '📈 보통', '📉 낮음'][Math.floor(Math.random() * 4)];
-            
-            // 랜덤한 추천도 선택
-            const recommend = ['✅ 추천', '⚠️ 주의', '❌ 비추천'][Math.floor(Math.random() * 3)];
-            
-            // AI 추천 메시지 목록
-            const recommendations = [
-                `"${keyword}" 관련 콘텐츠는 현재 상승 트렌드입니다. 지금이 제작 적기!`,
-                `"${keyword}" 키워드로 튜토리얼 형태의 콘텐츠를 추천합니다.`,
-                `"${keyword}" 관련해서 개인 경험담을 포함한 콘텐츠가 효과적입니다.`,
-                `"${keyword}" 트렌드를 활용한 챌린지 콘텐츠를 제안합니다.`
-            ];
-            
-            const times = [
-                '오후 7-9시 (평일)',
-                '오후 2-4시 (주말)',
-                '오전 11-12시 (평일)',
-                '오후 8-10시 (주말)'
-            ];
-            
-            return {
-                instagram: {
-                    views: views.toLocaleString() + '회',
-                    popularity: popularity,
-                    recommend: recommend
-                },
-                youtube: {
-                    views: (views * 1.5).toLocaleString() + '회',
-                    popularity: popularity,
-                    recommend: recommend
-                },
-                aiRecommendation: recommendations[Math.floor(Math.random() * recommendations.length)],
-                bestTime: times[Math.floor(Math.random() * times.length)]
-            };
+        
+        // 기능 섹션 표시 함수들
+        function showRealtimeTrends() {
+            document.getElementById('realtime-trends').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
         }
-
-        // 부드러운 스크롤
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
+        
+        function showContentRecommendations() {
+            document.getElementById('content-recommendations').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+        
+        function showCompetitorAnalysis() {
+            document.getElementById('competitor-analysis').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+        
+        function showPerformancePrediction() {
+            document.getElementById('performance-prediction').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+        
+        // 모바일에서 메뉴 링크 클릭 시 메뉴 닫기
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const navMenu = document.getElementById('navLinks');
+                    const hamburger = document.querySelector('.hamburger');
+                    
+                    if (window.innerWidth <= 768) {
+                        navMenu.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                });
+            });
+            
+            // 화면 크기 변경 시 메뉴 상태 초기화
+            window.addEventListener('resize', function() {
+                const navMenu = document.getElementById('navLinks');
+                const hamburger = document.querySelector('.hamburger');
+                
+                if (window.innerWidth > 768) {
+                    navMenu.classList.remove('active');
+                    hamburger.classList.remove('active');
                 }
             });
         });
 
-        // 엔터 키로 검색
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                analyzeTrend();
+        // 카테고리 입력 섹션 표시 함수
+        function showCategoryInput() {
+            const categorySection = document.getElementById('categoryInputSection');
+            const trendResults = document.getElementById('trendResults');
+            const trendLoading = document.getElementById('trendLoading');
+            
+            // 기존 결과 숨기기
+            trendResults.classList.add('hidden');
+            trendLoading.classList.add('hidden');
+            
+            // 카테고리 입력 섹션 표시
+            categorySection.classList.remove('hidden');
+            categorySection.classList.add('show');
+            
+            // 입력창에 포커스
+            document.getElementById('categoryInput').focus();
+        }
+
+        // 카테고리별 트렌드 로드 함수
+        async function loadCategoryTrends() {
+            const categoryInput = document.getElementById('categoryInput');
+            const category = categoryInput.value.trim();
+            
+            if (!category) {
+                alert('카테고리를 입력해주세요!');
+                return;
             }
+            
+            const trendLoading = document.getElementById('trendLoading');
+            const trendResults = document.getElementById('trendResults');
+            const trendGrid = document.getElementById('trendGrid');
+            
+            // 로딩 표시
+            trendLoading.classList.remove('hidden');
+            trendResults.classList.add('hidden');
+            
+            try {
+                // YouTube API 호출
+                const videos = await searchYouTubeVideos(category);
+                
+                if (videos.length === 0) {
+                    // 검색 결과가 없는 경우
+                    trendGrid.innerHTML = `
+                        <div style="grid-column: 1 / -1; text-align: center; margin-bottom: 2rem;">
+                            <h3 style="color: #ff4444; font-size: 1.8rem; margin-bottom: 1rem;">🔍 검색 결과 없음</h3>
+                            <p style="color: #cccccc; font-size: 1.1rem;">"${category}"에 대한 검색 결과를 찾을 수 없습니다.</p>
+                            <p style="color: #999999; font-size: 1rem; margin-top: 1rem;">다른 키워드로 다시 검색해보세요.</p>
+                        </div>
+                    `;
+                } else {
+                    displayCategoryTrends(videos, category);
+                }
+                
+                // 로딩 숨기고 결과 표시
+                trendLoading.classList.add('hidden');
+                trendResults.classList.remove('hidden');
+            } catch (error) {
+                console.error('YouTube API 호출 중 오류:', error);
+                trendLoading.classList.add('hidden');
+                
+                // 오류 메시지 표시
+                trendGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; margin-bottom: 2rem;">
+                        <h3 style="color: #ff4444; font-size: 1.8rem; margin-bottom: 1rem;">⚠️ API 오류</h3>
+                        <p style="color: #cccccc; font-size: 1.1rem;">YouTube API 호출 중 오류가 발생했습니다.</p>
+                        <p style="color: #999999; font-size: 1rem; margin-top: 1rem;">데모 데이터로 대체하여 표시합니다.</p>
+                    </div>
+                `;
+                
+                // 데모 데이터로 대체
+                const demoVideos = generateDemoYouTubeData(category);
+                displayCategoryTrends(demoVideos, category);
+                trendResults.classList.remove('hidden');
+            }
+        }
+
+        // YouTube API 검색 함수
+        async function searchYouTubeVideos(query) {
+            // YouTube Data API v3 키
+            const API_KEY = 'AIzaSyC-iinrZ_pJFshLGBvapI8rwgRq_7XNLRI';
+            if (!API_KEY) {
+                return generateDemoYouTubeData(query);
+            }
+            try {
+                // 1차 검색 (videoId만 얻음)
+                const params = new URLSearchParams({
+                    part: 'snippet',
+                    q: query,
+                    type: 'video',
+                    order: 'viewCount', // 조회수 순으로 정렬
+                    maxResults: 10,
+                    publishedAfter: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString(), // 최근 30일
+                    key: API_KEY
+                });
+                const response = await fetch(`https://www.googleapis.com/youtube/v3/search?${params}`);
+                const data = await response.json();
+                if (!data.items || data.items.length === 0) {
+                    return [];
+                }
+                // 2차 상세 정보 (통계 포함)
+                const videoIds = data.items.map(item => item.id.videoId).join(',');
+                const statsParams = new URLSearchParams({
+                    part: 'snippet,statistics',
+                    id: videoIds,
+                    key: API_KEY
+                });
+                const statsResponse = await fetch(`https://www.googleapis.com/youtube/v3/videos?${statsParams}`);
+                const statsData = await statsResponse.json();
+                // 콘솔로 실제 데이터 확인
+                console.log('유튜브 API 실제 데이터:', statsData);
+                if (!statsData.items || statsData.items.length === 0) {
+                    // 실제 데이터가 없으면 데모 데이터 반환
+                    return generateDemoYouTubeData(query);
+                }
+                // 실제 데이터가 있으면 그걸 반환
+                return statsData.items.map(item => ({
+                    id: item.id,
+                    title: item.snippet.title,
+                    channel: item.snippet.channelTitle,
+                    views: parseInt(item.statistics?.viewCount) || 0,
+                    likes: parseInt(item.statistics?.likeCount) || 0,
+                    comments: parseInt(item.statistics?.commentCount) || 0,
+                    thumbnail: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url,
+                    publishedAt: item.snippet.publishedAt,
+                    description: item.snippet.description,
+                    category: query,
+                    trendScore: calculateTrendScore(item.statistics || {}, item.snippet.publishedAt)
+                }));
+            } catch (error) {
+                console.error('YouTube API 호출 실패:', error);
+                // 오류가 발생하면 데모 데이터 반환
+                return generateDemoYouTubeData(query);
+            }
+        }
+
+        // 데모 YouTube 데이터 생성 함수
+        function generateDemoYouTubeData(query) {
+            const demoVideos = [
+                {
+                    id: 'demo_' + Math.random().toString(36).substr(2, 9),
+                    title: `${query} 관련 최신 트렌드 분석 2024`,
+                    channel: `${query} 전문가`,
+                    views: Math.floor(Math.random() * 2000000) + 500000,
+                    likes: Math.floor(Math.random() * 100000) + 10000,
+                    comments: Math.floor(Math.random() * 5000) + 500,
+                    thumbnail: `https://via.placeholder.com/300x200/ff4444/ffffff?text=${encodeURIComponent(query)}`,
+                    publishedAt: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString(),
+                    description: `${query} 분야의 최신 트렌드를 분석한 콘텐츠입니다. 시청자들의 관심을 끌고 있는 핫한 주제들을 다루고 있습니다.`,
+                    category: query,
+                    trendScore: Math.floor(Math.random() * 50) + 50
+                },
+                {
+                    id: 'demo_' + Math.random().toString(36).substr(2, 9),
+                    title: `${query} 인기 콘텐츠 TOP 10 - 2024년 최신`,
+                    channel: `${query} 마스터`,
+                    views: Math.floor(Math.random() * 1500000) + 300000,
+                    likes: Math.floor(Math.random() * 80000) + 8000,
+                    comments: Math.floor(Math.random() * 3000) + 300,
+                    thumbnail: `https://via.placeholder.com/300x200/ff6666/ffffff?text=${encodeURIComponent(query + ' TOP10')}`,
+                    publishedAt: new Date(Date.now() - Math.random() * 20 * 24 * 60 * 60 * 1000).toISOString(),
+                    description: `${query} 분야에서 가장 인기 있는 콘텐츠들을 소개합니다. 조회수, 좋아요, 댓글 수를 종합적으로 분석했습니다.`,
+                    category: query,
+                    trendScore: Math.floor(Math.random() * 50) + 50
+                },
+                {
+                    id: 'demo_' + Math.random().toString(36).substr(2, 9),
+                    title: `${query} 크리에이터 성공 사례 - 수익화 전략`,
+                    channel: `${query} 인사이더`,
+                    views: Math.floor(Math.random() * 1200000) + 200000,
+                    likes: Math.floor(Math.random() * 60000) + 6000,
+                    comments: Math.floor(Math.random() * 2000) + 200,
+                    thumbnail: `https://via.placeholder.com/300x200/ff8888/ffffff?text=${encodeURIComponent(query + ' 성공')}`,
+                    publishedAt: new Date(Date.now() - Math.random() * 15 * 24 * 60 * 60 * 1000).toISOString(),
+                    description: `${query} 분야에서 성공한 크리에이터들의 전략과 노하우를 공유합니다. 초보자도 따라할 수 있는 팁들을 제공합니다.`,
+                    category: query,
+                    trendScore: Math.floor(Math.random() * 50) + 50
+                },
+                {
+                    id: 'demo_' + Math.random().toString(36).substr(2, 9),
+                    title: `${query} 시장 동향 리포트 - 2024년 전망`,
+                    channel: `${query} 트렌드`,
+                    views: Math.floor(Math.random() * 1000000) + 150000,
+                    likes: Math.floor(Math.random() * 50000) + 5000,
+                    comments: Math.floor(Math.random() * 1500) + 150,
+                    thumbnail: `https://via.placeholder.com/300x200/ffaaaa/ffffff?text=${encodeURIComponent(query + ' 리포트')}`,
+                    publishedAt: new Date(Date.now() - Math.random() * 10 * 24 * 60 * 60 * 1000).toISOString(),
+                    description: `${query} 시장의 현재 동향과 2024년 전망을 분석한 리포트입니다. 투자자와 크리에이터 모두에게 유용한 정보를 제공합니다.`,
+                    category: query,
+                    trendScore: Math.floor(Math.random() * 50) + 50
+                },
+                {
+                    id: 'demo_' + Math.random().toString(36).substr(2, 9),
+                    title: `${query} 콘텐츠 전략 가이드 - 초보자용`,
+                    channel: `${query} 가이드`,
+                    views: Math.floor(Math.random() * 800000) + 100000,
+                    likes: Math.floor(Math.random() * 40000) + 4000,
+                    comments: Math.floor(Math.random() * 1000) + 100,
+                    thumbnail: `https://via.placeholder.com/300x200/ffcccc/ffffff?text=${encodeURIComponent(query + ' 가이드')}`,
+                    publishedAt: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000).toISOString(),
+                    description: `${query} 분야에서 콘텐츠를 만들고 싶은 초보자를 위한 완벽한 가이드입니다. 기초부터 차근차근 설명합니다.`,
+                    category: query,
+                    trendScore: Math.floor(Math.random() * 50) + 50
+                },
+                {
+                    id: 'demo_' + Math.random().toString(36).substr(2, 9),
+                    title: `${query} 트렌드 예측 분석 - AI 기반`,
+                    channel: `${query} 리뷰어`,
+                    views: Math.floor(Math.random() * 600000) + 80000,
+                    likes: Math.floor(Math.random() * 30000) + 3000,
+                    comments: Math.floor(Math.random() * 800) + 80,
+                    thumbnail: `https://via.placeholder.com/300x200/ffeeee/ffffff?text=${encodeURIComponent(query + ' 예측')}`,
+                    publishedAt: new Date(Date.now() - Math.random() * 5 * 24 * 60 * 60 * 1000).toISOString(),
+                    description: `AI 기술을 활용한 ${query} 트렌드 예측 분석입니다. 데이터 기반으로 미래 트렌드를 예측해보겠습니다.`,
+                    category: query,
+                    trendScore: Math.floor(Math.random() * 50) + 50
+                }
+            ];
+            return demoVideos;
+        }
+    </script>
+
+    <!-- 문의하기 섹션 -->
+    <hr class="section-divider">
+    <section class="demo-section" id="contact" style="background: linear-gradient(135deg, #fff6f6 0%, #f3f4f7 100%); padding: 0 0 4rem 0;">
+      <div class="container" style="max-width: 520px; margin: 0 auto;">
+        <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 1.2rem;">
+          <div style="font-size: 2.5rem; margin-bottom: 0.1rem;">📬</div>
+          <h2 style="font-size: 1.7rem; font-weight: 700; color: #23232a; margin-bottom: 0.2rem; letter-spacing: -0.5px; text-align: center; font-family: 'Pretendard', 'Noto Sans KR', sans-serif;">문의하기</h2>
+          <p style="color: #8a8a8a; font-size: 0.98rem; text-align: center; margin-bottom: 0; font-weight: 400;">서비스 관련 문의나 제안이 있으시면<br>아래 폼을 통해 연락해 주세요.</p>
+        </div>
+        <form style="background: #fff; border-radius: 18px; box-shadow: 0 2px 12px rgba(30,34,90,0.06); padding: 2.2rem 2rem 1.7rem 2rem; border: 1.5px solid #ffd6d6; margin-top: 1.2rem;" onsubmit="event.preventDefault(); alert('문의가 정상적으로 접수되었습니다!'); this.reset();">
+          <div style="margin-bottom: 1.1rem;">
+            <label for="contactName" style="color: #b24545; font-weight: 600; display: block; margin-bottom: 0.3rem; font-size: 0.98rem;">이름</label>
+            <input type="text" id="contactName" name="contactName" required style="width: 100%; padding: 0.85rem 1rem; border-radius: 10px; border: 1.5px solid #ffd6d6; background: #fff; color: #23232a; font-size: 1rem; outline: none; transition: border 0.2s; box-sizing: border-box;">
+          </div>
+          <div style="margin-bottom: 1.1rem;">
+            <label for="contactEmail" style="color: #b24545; font-weight: 600; display: block; margin-bottom: 0.3rem; font-size: 0.98rem;">이메일</label>
+            <input type="email" id="contactEmail" name="contactEmail" required style="width: 100%; padding: 0.85rem 1rem; border-radius: 10px; border: 1.5px solid #ffd6d6; background: #fff; color: #23232a; font-size: 1rem; outline: none; transition: border 0.2s; box-sizing: border-box;">
+          </div>
+          <div style="margin-bottom: 1.5rem;">
+            <label for="contactMessage" style="color: #b24545; font-weight: 600; display: block; margin-bottom: 0.3rem; font-size: 0.98rem;">문의 내용</label>
+            <textarea id="contactMessage" name="contactMessage" rows="5" required style="width: 100%; padding: 0.85rem 1rem; border-radius: 10px; border: 1.5px solid #ffd6d6; background: #fff; color: #23232a; font-size: 1rem; outline: none; transition: border 0.2s; box-sizing: border-box; resize: vertical;"></textarea>
+          </div>
+          <button type="submit" class="search-button" style="width: 100%; max-width: 220px; margin: 0 auto; display: block; background: #ffd6d6; color: #b24545; font-weight: 700; border: none; border-radius: 10px; font-size: 1.05rem; padding: 0.85rem 0; box-shadow: 0 1px 4px rgba(255,179,179,0.07); transition: background 0.2s, color 0.2s; letter-spacing: 0.01em;">문의 보내기</button>
+        </form>
+        <div style="margin-top: 2rem; text-align: center; color: #bfc2c7; font-size: 0.98rem; line-height: 1.6;">
+          &copy; 2024 Trendpick. 모든 권리 보유.<br>
+          크리에이터의 성공을 위한 AI 트렌드 분석 플랫폼
+        </div>
+      </div>
+    </section>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 스크롤 자동 이동 기능을 여러 박스에 재사용할 수 있게 함수로 만듦
+        function setAutoScroll(scrollBox, speed = 1.2) {
+            if (!scrollBox) return;
+            let interval = null;
+            function autoScroll() {
+                if (scrollBox.scrollLeft + scrollBox.clientWidth >= scrollBox.scrollWidth - 1) {
+                    scrollBox.scrollLeft = 0;
+                } else {
+                    scrollBox.scrollLeft += speed;
+                }
+            }
+            interval = setInterval(autoScroll, 20);
+            scrollBox.addEventListener('mouseenter', () => clearInterval(interval));
+            scrollBox.addEventListener('mouseleave', () => {
+                interval = setInterval(autoScroll, 20);
+            });
+        }
+        // 두 스크롤 영역에 자동 스크롤 적용
+        setAutoScroll(document.querySelector('.trend-controls.compact'));
+        setAutoScroll(document.querySelector('.trend-controls.compact.second-scroll'));
+
+        // second scroll의 width를 first scroll과 같게 맞추는 코드
+        const firstScroll = document.querySelector('.trend-controls.compact:not(.second-scroll)');
+        const secondScroll = document.querySelector('.trend-controls.compact.second-scroll');
+        if (firstScroll && secondScroll) {
+            function matchScrollWidth() {
+                const width = firstScroll.offsetWidth;
+                secondScroll.style.width = width + 'px';
+            }
+            matchScrollWidth();
+            window.addEventListener('resize', matchScrollWidth);
+        }
+
+        // trend-button 클릭 시 카테고리 추출 함수로 효율화
+        function extractCategory(text) {
+            // 이모지와 공백 제거
+            return text.replace(/^([\p{Emoji_Presentation}\p{Extended_Pictographic}]|\uD83C[\uDFFB-\uDFFF]|\u200D|\uFE0F|\s)+/gu, '');
+        }
+        document.querySelectorAll('.trend-controls.compact .trend-button').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const category = extractCategory(btn.textContent.trim());
+                const categoryInput = document.getElementById('categoryInput');
+                if (categoryInput) categoryInput.value = category;
+                if (typeof loadCategoryTrends === 'function') loadCategoryTrends();
+            });
         });
+    });
+    </script>
+
+    <!-- trend-button 검색 결과 팝업 -->
+    <div id="trendPopup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:99999; align-items:center; justify-content:center;">
+      <div style="background:#fff; color:#23232a; border-radius:18px; max-width:90vw; min-width:320px; padding:2.5rem 2rem; box-shadow:0 8px 32px rgba(0,0,0,0.18); position:relative;">
+        <button onclick="closeTrendPopup()" style="position:absolute; top:1.1rem; right:1.1rem; background:none; border:none; font-size:2rem; color:#23232a; cursor:pointer;">&times;</button>
+        <h2 id="trendPopupTitle" style="margin-bottom:1.5rem; font-size:1.5rem;">검색 결과</h2>
+        <ul id="trendPopupList" style="list-style:none; padding:0; margin:0;"></ul>
+      </div>
+    </div>
+
+    <script>
+    // ... existing code ...
+    // trend-button 클릭 시 유튜브 검색 및 팝업 표시
+    async function handleTrendButtonClick(e) {
+      let btn = e.currentTarget;
+      let category = btn.getAttribute('data-category') || btn.textContent.replace(/^[^\w가-힣]+/, '').trim();
+      if (!category) return;
+      showTrendPopup('검색 중...');
+      try {
+        const API_KEY = 'AIzaSyC-iinrZ_pJFshLGBvapI8rwgRq_7XNLRI';
+        const params = new URLSearchParams({
+          part: 'snippet',
+          q: category,
+          type: 'video',
+          order: 'relevance',
+          maxResults: 5,
+          key: API_KEY
+        });
+        const response = await fetch(`https://www.googleapis.com/youtube/v3/search?${params}`);
+        const data = await response.json();
+        let list = [];
+        if (data.items && data.items.length > 0) {
+          list = data.items.map(item => item.snippet.title);
+        } else {
+          list = ['검색 결과가 없습니다.'];
+        }
+        showTrendPopup(category + ' 유튜브 상위 5개 영상', list);
+      } catch (err) {
+        showTrendPopup('검색 실패', ['유튜브 API 호출 중 오류가 발생했습니다.']);
+      }
+    }
+    function showTrendPopup(title, list) {
+      document.getElementById('trendPopup').style.display = 'flex';
+      document.getElementById('trendPopupTitle').textContent = title;
+      const ul = document.getElementById('trendPopupList');
+      if (Array.isArray(list)) {
+        ul.innerHTML = list.map(t => `<li style='margin-bottom:1rem; font-size:1.1rem;'>${t}</li>`).join('');
+      } else {
+        ul.innerHTML = `<li style='margin-bottom:1rem; font-size:1.1rem;'>${list||''}</li>`;
+      }
+    }
+    function closeTrendPopup() {
+      document.getElementById('trendPopup').style.display = 'none';
+    }
+    // trend-button에 클릭 이벤트 일괄 적용
+    window.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.trend-button').forEach(btn => {
+        btn.onclick = handleTrendButtonClick;
+      });
+    });
+    // ... existing code ...
     </script>
 </body>
 </html>
