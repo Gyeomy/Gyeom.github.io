@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 포토북 관리자 페이지</title>
+  <meta name="description" content="사용자 요구사항 관리 페이지">
+  
+  <!-- 폰트 로드 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* 기본 스타일 리셋 */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', 'Noto Sans KR', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: #f8fafc;
+    }
+    
+    /* 관리자 헤더 */
+    .admin-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    .admin-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    
+    .admin-header p {
+      opacity: 0.9;
+      font-size: 1.125rem;
+    }
+    
+    /* 관리자 컨테이너 */
+    .admin-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    /* 통계 카드 */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+    
+    .stat-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      color: #64748b;
+      font-weight: 500;
+    }
+    
+    /* 필터 및 검색 */
+    .controls {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    
+    .search-box {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .search-box input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    
+    .filter-select {
+      padding: 0.75rem 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 1rem;
+      background: white;
+    }
+    
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #1d4ed8;
+    }
+    
+    .btn-danger {
+      background: #dc2626;
+      color: white;
+    }
+    
+    .btn-danger:hover {
+      background: #b91c1c;
+    }
+    
+    /* 요구사항 목록 */
+    .requirements-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .requirement-item {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .requirement-item:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-2px);
+    }
+    
+    .requirement-header {
+      background: #f8fafc;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .requirement-title {
+      font-weight: 600;
+      color: #1e293b;
+      font-size: 1.125rem;
+    }
+    
+    .requirement-date {
+      color: #64748b;
+      font-size: 0.875rem;
+    }
+    
+    .requirement-content {
+      padding: 1.5rem;
+    }
+    
+    .requirement-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .requirement-section {
+      background: #f8fafc;
+      padding: 1rem;
+      border-radius: 8px;
+    }
+    
+    .requirement-section h4 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #64748b;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    .requirement-section p {
+      color: #1e293b;
+      font-weight: 500;
+    }
+    
+    .requirement-actions {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: flex-end;
+      padding-top: 1rem;
+      border-top: 1px solid #e2e8f0;
+    }
+    
+    .requirement-actions .btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+    }
+    
+    /* 연락처 정보 */
+    .contact-info {
+      background: #eff6ff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    
+    .contact-info h4 {
+      color: #1e40af;
+      margin-bottom: 1rem;
+      font-size: 1.125rem;
+    }
+    
+    .contact-details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+    
+    .contact-detail {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    
+    .contact-label {
+      font-weight: 600;
+      color: #374151;
+      min-width: 100px;
+      font-size: 0.875rem;
+    }
+    
+    .contact-value {
+      color: #1f2937;
+      font-weight: 500;
+    }
+    
+    .contact-value.instagram {
+      color: #e4405f;
+    }
+    
+    .contact-value.phone {
+      color: #059669;
+    }
+    
+    /* 추가 요구사항 */
+    .additional-notes {
+      background: #fef3c7;
+      padding: 1rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    
+    .additional-notes h4 {
+      color: #92400e;
+      margin-bottom: 0.5rem;
+    }
+    
+    .additional-notes p {
+      color: #78350f;
+      font-style: italic;
+    }
+    
+    /* 빈 상태 */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #64748b;
+    }
+    
+    .empty-state h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #475569;
+    }
+    
+    .empty-state p {
+      font-size: 1.125rem;
+    }
+    
+    /* 반응형 디자인 */
+    @media (max-width: 768px) {
+      .admin-header h1 {
+        font-size: 2rem;
+      }
+      
+      .controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .requirement-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .requirement-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      
+      .requirement-actions {
+        flex-direction: column;
+      }
+      
+      .contact-details-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+      
+      .contact-label {
+        min-width: 80px;
+        font-size: 0.8rem;
+      }
+      
+      .contact-value {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 관리자 헤더 -->
+  <header class="admin-header">
+    <h1>📊 AI 포토북 관리자 페이지</h1>
+    <p>사용자 요구사항 및 연락처 정보 관리</p>
+  </header>
+
+  <!-- 관리자 컨테이너 -->
+  <div class="admin-container">
+    <!-- 통계 카드 -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number" id="total-submissions">0</div>
+        <div class="stat-label">총 제출 건수</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="today-submissions">0</div>
+        <div class="stat-label">오늘 제출 건수</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="pending-requests">0</div>
+        <div class="stat-label">대기 중인 요청</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="completed-requests">0</div>
+        <div class="stat-label">완료된 요청</div>
+      </div>
+    </div>
+
+    <!-- 필터 및 검색 -->
+    <div class="controls">
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="이름, 전화번호, 이메일, 인스타그램, 프로젝트 제목으로 검색...">
+      </div>
+      <select class="filter-select" id="status-filter">
+        <option value="all">모든 상태</option>
+        <option value="pending">대기 중</option>
+        <option value="in-progress">진행 중</option>
+        <option value="completed">완료</option>
+      </select>
+      <select class="filter-select" id="template-filter">
+        <option value="all">모든 템플릿</option>
+        <option value="travel">여행 추억</option>
+        <option value="friendship">우정의 기록</option>
+        <option value="love">연인의 순간</option>
+        <option value="graduation">졸업 앨범</option>
+        <option value="family">가족 앨범</option>
+        <option value="party">파티 & 이벤트</option>
+      </select>
+             <button class="btn btn-primary" id="refresh-btn">새로고침</button>
+       <button class="btn btn-danger" id="clear-all-btn">모든 데이터 삭제</button>
+       <button class="btn btn-secondary" id="logout-btn">로그아웃</button>
+    </div>
+
+    <!-- 요구사항 목록 -->
+    <div class="requirements-list" id="requirements-list">
+      <!-- 요구사항 항목들이 여기에 동적으로 추가됩니다 -->
+    </div>
+  </div>
+
+  <script>
+    // 비밀번호 보호
+    const ADMIN_PASSWORD = "인사이더스MVP";
+    let isAuthenticated = false;
+    
+    // 인증 확인
+    function checkAuth() {
+      if (!isAuthenticated) {
+        const password = prompt("관리자 페이지에 접근하려면 비밀번호를 입력하세요:");
+        if (password === ADMIN_PASSWORD) {
+          isAuthenticated = true;
+          document.body.style.display = 'block';
+          initAdmin();
+        } else {
+          alert("비밀번호가 올바르지 않습니다.");
+          document.body.style.display = 'none';
+          setTimeout(checkAuth, 100);
+        }
+      }
+    }
+    
+    // 관리자 초기화
+    function initAdmin() {
+      requirementsManager = new RequirementsManager();
+      
+      // 테스트 데이터 추가 (실제 사용 시 제거)
+      if (requirementsManager.requirements.length === 0) {
+        requirementsManager.addRequirement({
+          name: '홍길동',
+          phone: '010-1234-5678',
+          email: 'test@example.com',
+          instagram: '@testuser',
+          projectTitle: '테스트 프로젝트',
+          templateName: '여행 추억',
+          style: '미니멀',
+          color: '따뜻한 톤',
+          layout: '그리드',
+          features: '배경음악, 애니메이션',
+          additionalNotes: '테스트용 요구사항입니다.'
+        });
+      }
+    }
+    
+    // 요구사항 데이터 관리
+    class RequirementsManager {
+      constructor() {
+        this.storageKey = 'photobook_requirements';
+        this.requirements = this.loadRequirements();
+        this.init();
+      }
+      
+      // 로컬 스토리지에서 데이터 로드
+      loadRequirements() {
+        const data = localStorage.getItem(this.storageKey);
+        return data ? JSON.parse(data) : [];
+      }
+      
+      // 로컬 스토리지에 데이터 저장
+      saveRequirements() {
+        localStorage.setItem(this.storageKey, JSON.stringify(this.requirements));
+      }
+      
+      // 새 요구사항 추가
+      addRequirement(requirement) {
+        const newRequirement = {
+          id: Date.now(),
+          ...requirement,
+          status: 'pending',
+          createdAt: new Date().toISOString()
+        };
+        
+        this.requirements.unshift(newRequirement);
+        this.saveRequirements();
+        this.updateDisplay();
+      }
+      
+      // 요구사항 상태 업데이트
+      updateStatus(id, status) {
+        const requirement = this.requirements.find(r => r.id === id);
+        if (requirement) {
+          requirement.status = status;
+          this.saveRequirements();
+          this.updateDisplay();
+        }
+      }
+      
+      // 요구사항 삭제
+      deleteRequirement(id) {
+        this.requirements = this.requirements.filter(r => r.id !== id);
+        this.saveRequirements();
+        this.updateDisplay();
+      }
+      
+      // 모든 데이터 삭제
+      clearAll() {
+        if (confirm('정말로 모든 데이터를 삭제하시겠습니까?')) {
+          this.requirements = [];
+          this.saveRequirements();
+          this.updateDisplay();
+        }
+      }
+      
+      // 통계 업데이트
+      updateStats() {
+        const total = this.requirements.length;
+        const today = new Date().toDateString();
+        const todayCount = this.requirements.filter(r => 
+          new Date(r.createdAt).toDateString() === today
+        ).length;
+        const pending = this.requirements.filter(r => r.status === 'pending').length;
+        const completed = this.requirements.filter(r => r.status === 'completed').length;
+        
+        document.getElementById('total-submissions').textContent = total;
+        document.getElementById('today-submissions').textContent = todayCount;
+        document.getElementById('pending-requests').textContent = pending;
+        document.getElementById('completed-requests').textContent = completed;
+      }
+      
+      // 필터링된 요구사항 가져오기
+      getFilteredRequirements() {
+        const searchTerm = document.getElementById('search-input').value.toLowerCase();
+        const statusFilter = document.getElementById('status-filter').value;
+        const templateFilter = document.getElementById('template-filter').value;
+        
+        return this.requirements.filter(requirement => {
+          const matchesSearch = 
+            (requirement.name && requirement.name.toLowerCase().includes(searchTerm)) ||
+            (requirement.phone && requirement.phone.toLowerCase().includes(searchTerm)) ||
+            requirement.email.toLowerCase().includes(searchTerm) ||
+            (requirement.instagram && requirement.instagram.toLowerCase().includes(searchTerm)) ||
+            requirement.projectTitle.toLowerCase().includes(searchTerm);
+          
+          const matchesStatus = statusFilter === 'all' || requirement.status === statusFilter;
+          const matchesTemplate = templateFilter === 'all' || requirement.templateName.includes(templateFilter);
+          
+          return matchesSearch && matchesStatus && matchesTemplate;
+        });
+      }
+      
+      // 요구사항 카드 생성
+      createRequirementCard(requirement) {
+        const statusColors = {
+          pending: '#f59e0b',
+          'in-progress': '#3b82f6',
+          completed: '#10b981'
+        };
+        
+        const statusTexts = {
+          pending: '대기 중',
+          'in-progress': '진행 중',
+          completed: '완료'
+        };
+        
+        const card = document.createElement('div');
+        card.className = 'requirement-item';
+        card.innerHTML = `
+          <div class="requirement-header">
+            <div>
+              <div class="requirement-title">${requirement.projectTitle}</div>
+              <div class="requirement-date">${new Date(requirement.createdAt).toLocaleString('ko-KR')}</div>
+            </div>
+            <div style="color: ${statusColors[requirement.status]}; font-weight: 600;">
+              ${statusTexts[requirement.status]}
+            </div>
+          </div>
+          <div class="requirement-content">
+            <div class="contact-info">
+              <h4>📧 연락처 정보</h4>
+              <div class="contact-details-grid">
+                <div class="contact-detail">
+                  <span class="contact-label">이름:</span>
+                  <span class="contact-value">${requirement.name || '없음'}</span>
+                </div>
+                <div class="contact-detail">
+                  <span class="contact-label">전화번호:</span>
+                  <span class="contact-value phone">${requirement.phone || '없음'}</span>
+                </div>
+                <div class="contact-detail">
+                  <span class="contact-label">이메일:</span>
+                  <span class="contact-value">${requirement.email}</span>
+                </div>
+                <div class="contact-detail">
+                  <span class="contact-label">인스타그램:</span>
+                  <span class="contact-value instagram">${requirement.instagram || '없음'}</span>
+                </div>
+                <div class="contact-detail">
+                  <span class="contact-label">프로젝트 제목:</span>
+                  <span class="contact-value">${requirement.projectTitle}</span>
+                </div>
+                <div class="contact-detail">
+                  <span class="contact-label">템플릿:</span>
+                  <span class="contact-value">${requirement.templateName}</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="requirement-grid">
+              <div class="requirement-section">
+                <h4>스타일</h4>
+                <p>${requirement.style}</p>
+              </div>
+              <div class="requirement-section">
+                <h4>색상</h4>
+                <p>${requirement.color}</p>
+              </div>
+              <div class="requirement-section">
+                <h4>레이아웃</h4>
+                <p>${requirement.layout}</p>
+              </div>
+              <div class="requirement-section">
+                <h4>추가 기능</h4>
+                <p>${requirement.features || '없음'}</p>
+              </div>
+            </div>
+            
+            ${requirement.additionalNotes ? `
+              <div class="additional-notes">
+                <h4>📝 추가 요구사항</h4>
+                <p>${requirement.additionalNotes}</p>
+              </div>
+            ` : ''}
+            
+            <div class="requirement-actions">
+              <select class="filter-select" onchange="requirementsManager.updateStatus(${requirement.id}, this.value)">
+                <option value="pending" ${requirement.status === 'pending' ? 'selected' : ''}>대기 중</option>
+                <option value="in-progress" ${requirement.status === 'in-progress' ? 'selected' : ''}>진행 중</option>
+                <option value="completed" ${requirement.status === 'completed' ? 'selected' : ''}>완료</option>
+              </select>
+              <button class="btn btn-danger" onclick="requirementsManager.deleteRequirement(${requirement.id})">삭제</button>
+            </div>
+          </div>
+        `;
+        
+        return card;
+      }
+      
+      // 화면 업데이트
+      updateDisplay() {
+        const container = document.getElementById('requirements-list');
+        const filteredRequirements = this.getFilteredRequirements();
+        
+        if (filteredRequirements.length === 0) {
+          container.innerHTML = `
+            <div class="empty-state">
+              <h3>📭 요구사항이 없습니다</h3>
+              <p>아직 제출된 요구사항이 없거나 검색 조건에 맞는 결과가 없습니다.</p>
+            </div>
+          `;
+        } else {
+          container.innerHTML = '';
+          filteredRequirements.forEach(requirement => {
+            container.appendChild(this.createRequirementCard(requirement));
+          });
+        }
+        
+        this.updateStats();
+      }
+      
+      // 이벤트 리스너 초기화
+      init() {
+        // 검색 이벤트
+        document.getElementById('search-input').addEventListener('input', () => {
+          this.updateDisplay();
+        });
+        
+        // 필터 이벤트
+        document.getElementById('status-filter').addEventListener('change', () => {
+          this.updateDisplay();
+        });
+        
+        document.getElementById('template-filter').addEventListener('change', () => {
+          this.updateDisplay();
+        });
+        
+        // 새로고침 버튼
+        document.getElementById('refresh-btn').addEventListener('click', () => {
+          this.updateDisplay();
+        });
+        
+                 // 모든 데이터 삭제 버튼
+         document.getElementById('clear-all-btn').addEventListener('click', () => {
+           this.clearAll();
+         });
+         
+         // 로그아웃 버튼
+         document.getElementById('logout-btn').addEventListener('click', () => {
+           if (confirm('로그아웃하시겠습니까?')) {
+             isAuthenticated = false;
+             document.body.style.display = 'none';
+             setTimeout(checkAuth, 100);
+           }
+         });
+         
+         // 초기 화면 업데이트
+         this.updateDisplay();
+       }
+     }
+    
+         // 페이지 로드 시 인증 확인
+     document.addEventListener('DOMContentLoaded', function() {
+       document.body.style.display = 'none';
+       checkAuth();
+     });
+   </script>
+</body>
+</html> 
